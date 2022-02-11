@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package helloworld;
-
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author vker
@@ -16,10 +18,106 @@ public class HelloWorld {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Hello World");
-        System.out.println("I am Vasilis");
-        System.out.println("Conflict");
-        System.out.println("Crash");
+        //createTableAndData();
+        //insertNewUser(4,"Vasilis","1234");
+        //insertNewUser(5,"Giorgos","5678");
+        selectAll();
+        //System.out.println(selectLogin("ARIS","2456"));
+        //System.out.println(selectLogin("Vasilis","1234"));
     }
     
-}
+        private static void selectAll(){
+            try {
+             Connection connection = connect();
+             Statement statement = connection.createStatement();
+             String selectSQL = "select * from V_USER";
+             ResultSet resultSet = statement.executeQuery(selectSQL);
+             while(resultSet.next()){
+                 System.out.println(resultSet.getString("USERNAME")+","+resultSet.getString("PASSWORD"));
+             }
+             statement.close();
+             connection.close();
+             System.out.println("Done!");
+        } catch (SQLException ex) {
+            Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
+        }    
+    }
+        
+        private static String selectLogin(String username, String password){
+                   try {
+             Connection connection = connect();
+             String selectSQL = "select ID from V_USER where USERNAME=? and PASSWORD=?";
+             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+             preparedStatement.setString(1, username);
+             preparedStatement.setString(2, password);
+             ResultSet resultSet = preparedStatement.executeQuery();
+             String message;
+             if(resultSet.next()){
+                 //System.out.println("login success!");
+                 message = "Login ok";
+             }else{
+                 message = "Login failed";
+             }
+             preparedStatement.close();
+             connection.close();
+             System.out.println("Done!");
+             return message;
+        } catch (SQLException ex) {
+            Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+          return "";
+    }
+        
+        private static void insertNewUser(int id, String username, String password){
+        try {
+             Connection connection = connect();
+             String insertSQL = "INSERT INTO V_USER VALUES(?,?,?)";
+             PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
+             preparedStatement.setInt(1, id);
+             preparedStatement.setString(2, username);
+             preparedStatement.setString(3, password);
+             int count = preparedStatement.executeUpdate();
+             if(count>0){
+                 System.out.println(count+" record updated");
+             }
+             preparedStatement.close();
+             connection.close();
+             System.out.println("Done!");
+        } catch (SQLException ex) {
+            Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private static void createTableAndData(){
+        try {
+             Connection connection = connect();
+             String createTableSQL = "CREATE TABLE V_USER"
+               + "(ID INTEGER NOT NULL PRIMARY KEY,"
+               + "USERNAME VARCHAR(20),"
+               + "PASSWORD VARCHAR(20))";
+             Statement statement = connection.createStatement();
+             statement.executeUpdate(createTableSQL);
+             String insertSQL = "INSERT INTO V_USER VALUES(2,'PANTELIS','P12345')";
+             statement.executeUpdate(insertSQL);
+             statement.close();
+             connection.close();
+             System.out.println("Done!");
+        } catch (SQLException ex) {
+            Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private static Connection connect(){
+        String connectionString = "jdbc:derby:derbyeap;create=true";
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(connectionString);
+        } catch (SQLException ex) {
+            Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return connection;
+    }
+    
+
+    
+    }
