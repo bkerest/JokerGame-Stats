@@ -1,0 +1,20 @@
+Tue Mar 10 22:17:15 EET 2020 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
+----------------------------------------------------------------
+Tue Mar 10 22:17:16 EET 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0170-c618-23a0-fffffb7c18ed 
+on database directory C:\PLH24_3ERG_VOUTSAS\AMV_Software\Econometrica_AMV\resources\bin\EcoDB with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/PLH24_3ERG_VOUTSAS/AMV_Software/Econometrica_AMV/resources/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_112-b15
+user.dir=C:\PLH24_3ERG_VOUTSAS\AMV_Software\Econometrica_AMV\resources\bin
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\PLH24_3ERG_VOUTSAS\AMV_Software\Econometrica_AMV\resources\bin
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Tue Mar 10 22:28:29 EET 2020: Shutting down Derby engine
+----------------------------------------------------------------
+Tue Mar 10 22:28:29 EET 2020:
+Shutting down instance a816c00e-0170-c618-23a0-fffffb7c18ed on database directory C:\PLH24_3ERG_VOUTSAS\AMV_Software\Econometrica_AMV\resources\bin\EcoDB with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
