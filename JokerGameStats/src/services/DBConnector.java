@@ -1,82 +1,28 @@
 package services;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-
-/**
- * @Fani
- * @Giannis
- * @Giorgos
- * @Vasilis
- */
 
 public class DBConnector {    
     
     //Δήλωση των στοιχείων για τη σύνδεση με τη ΒΔ
-    private final String DB_URL = "jdbc:derby://localhost:1527/JokerStats;create=true";
-    private final String USER = "Joker";
-    private final String PASS = "joker";
-    
-    //αντικείμενο για τη σύνδεση με τη ΒΔ
-    Connection conn = null;
-    
-    /*
-    μέθοδος για την εκκίνηση του Derby Network Server και τη σύνδεση με τη ΒΔ
-    */
-    public void connectToDB () {           
-        /*
-        Σταμάτημα και εκκίνηση του Network Server,
-        πρώτα σταματάει για να τερματιστούν τυχόν ανοιχτές συνδέσεις
-        */
+        public static Connection connect(){
+        String connectionString = "jdbc:derby:JokerStats;create=true";
+        Connection connection = null;
         try {
-            //δηλώνουμε το relative path του αρχείου
-            String batFile = "resources/bin";
-            //Ξεκινάμε νια νέα διεργασία
-            Process process = Runtime.getRuntime().exec("cmd /c stopNetworkServer.bat", null, new File(batFile));
-            //περιμένουμε να ολοκληρωθεί πριν ξεκινήσει η επόμενη
-            process.waitFor();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(DBConnector.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+            connection = DriverManager.getConnection(connectionString);
+        } catch (SQLException ex) {
             Logger.getLogger(DBConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //εκκίνηση του derby network server        
-        try {
-            //ίδια λογική με παραπάνω
-            String batFile = "resources/bin";
-            /*
-            η παράμετρος 'start /b' σημαίνει ότι το cmd θα εκκινήσει στο 
-            παρασκήνιο χωρίς να είναι ορατό
-            */            
-            Process process = Runtime.getRuntime().exec("cmd /c start /b startNetworkServer.bat", null, new File(batFile));
-            process.waitFor();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(DBConnector.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(DBConnector.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        //σύνδεση με τη ΒΔ
-        try {
-            //με την παράμετρο 'create=true' κατασκευάζει μια νέα 
-            //ΒΔ αν δεν βρει υπάρχουσα
-            conn = DriverManager.getConnection(DB_URL,USER,PASS);
-        } catch(Exception e){
-            //αναδυόμενο παράθυρο ενημέρωσης για σφάλμα
-           JOptionPane.showMessageDialog(null, "ERROR while connecting to DB!!!");
-        }
+        return connection;
     }
+    
+    
+}
+
     
     //μέθοδος για την κατασκευή του σχήματος της βάσης
     public void createTables() {        
