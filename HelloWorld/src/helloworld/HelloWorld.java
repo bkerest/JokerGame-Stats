@@ -24,7 +24,7 @@ public class HelloWorld {
         //insertNewUser(6,"Giannis","8974");
         selectAll();
         //System.out.println(selectLogin("ARIS","2456"));
-        //System.out.println(selectLogin("Vasilis","1234"));
+        System.out.println(selectLogin("Vasilis","1234"));
     }
     
         private static void selectAll(){
