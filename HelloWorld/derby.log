@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Fri Feb 11 23:55:37 EET 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017e-eac8-d577-00000ea97b68 
-on database directory C:\Users\vker\OneDrive\Έγγραφα\NetBeansProjects\HelloWorld\derbyeap with class loader sun.misc.Launcher$AppClassLoader@29453f44 
+Sat Feb 12 22:26:14 EET 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017e-ef9d-5c78-00000ea9a658 
+on database directory C:\Users\vker\OneDrive\Έγγραφα\NetBeansProjects\HelloWorld\HelloWorld with class loader sun.misc.Launcher$AppClassLoader@29453f44 
 Loaded from file:/C:/Apache/db-derby-10.14.2.0/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_311-b11

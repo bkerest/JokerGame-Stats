@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package helloworld;
+import static helloworld.DBConnector.connect;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,12 +20,12 @@ public class HelloWorld {
     public static void main(String[] args) {
         // TODO code application logic here
         //createTableAndData();
-        //insertNewUser(4,"Vasilis","1234");
-        //insertNewUser(5,"Giorgos","5678");
-        //insertNewUser(6,"Giannis","8974");
+        //insertNewUser(3,"Vasilis","1234");
+        //insertNewUser(4,"Giorgos","5678");
+        //insertNewUser(5,"Giannis","8974");
         selectAll();
         //System.out.println(selectLogin("ARIS","2456"));
-        System.out.println(selectLogin("Vasilis","1234"));
+        //System.out.println(selectLogin("Vasilis","1234"));
     }
     
         private static void selectAll(){
@@ -108,17 +109,4 @@ public class HelloWorld {
         }
     }
 
-    private static Connection connect(){
-        String connectionString = "jdbc:derby:derbyeap;create=true";
-        Connection connection = null;
-        try {
-            connection = DriverManager.getConnection(connectionString);
-        } catch (SQLException ex) {
-            Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return connection;
-    }
-    
-
-    
-    }
