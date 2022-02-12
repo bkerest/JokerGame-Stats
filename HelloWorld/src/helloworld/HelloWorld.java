@@ -21,7 +21,8 @@ public class HelloWorld {
         //createTableAndData();
         //insertNewUser(4,"Vasilis","1234");
         //insertNewUser(5,"Giorgos","5678");
-        selectAll();
+        insertNewUser(6,"Giannis","8974");
+        //selectAll();
         //System.out.println(selectLogin("ARIS","2456"));
         //System.out.println(selectLogin("Vasilis","1234"));
     }
