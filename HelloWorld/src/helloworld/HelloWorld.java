@@ -19,12 +19,12 @@ public class HelloWorld {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        //createTableAndData();
+        createTableAndData();
         //insertNewUser(3,"Vasilis","1234");
         //insertNewUser(4,"Giorgos","5678");
         //insertNewUser(5,"Giannis","8974");
         //selectAll();
-        System.out.println(selectLogin("ARIS","2456"));
+        //System.out.println(selectLogin("ARIS","2456"));
         //System.out.println(selectLogin("Vasilis","1234"));
     }
     
