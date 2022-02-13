@@ -1,16 +1,19 @@
 package helloworld;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.apache.derby.drda.NetworkServerControl;
 
-public class DBConnector {    
+public class DBConnector {
+    NetworkServerControl();
+    
     
     //Δήλωση των στοιχείων για τη σύνδεση με τη ΒΔ
         public static Connection connect(){
-        String connectionString = "jdbc:derby:HelloWorld;create=true";
+
+        
+        String connectionString = "jdbc:derby://localhost:1527/HelloWorld;create=true";
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(connectionString);
@@ -19,6 +22,11 @@ public class DBConnector {
         }
         return connection;
     }
-    
+        
+        public static NetworkServerControl() throws Exception{
+            NetworkServerControl serverControl=new NetworkServerControl();
+            serverControl.start(null);
+            
+        }
     
 }
