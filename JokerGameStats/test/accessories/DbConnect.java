@@ -58,7 +58,7 @@ public final class DbConnect
      * Διαδικασία αρχικοποίησης της ΒΔ(Δημιουργία πινάκων)
      * @return 
      */
-    public boolean InitializeDB () {
+    public boolean InitializeDB() {
         
         boolean err=false;
         //Μεταβλητή τύπου Connection στην οποία καταχωρούμε το Connection String

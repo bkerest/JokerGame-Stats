@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package jokergamestats;
+import accessories.DbConnect;
 
 /**
  *
@@ -17,6 +18,8 @@ public class JokerGameStats {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Test Message 1");
+        DbConnect.connect();
+        InitializeDB();
     }
     
 }
