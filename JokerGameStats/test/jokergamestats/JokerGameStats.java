@@ -5,6 +5,7 @@
  */
 package jokergamestats;
 import accessories.DbConnect;
+import static accessories.DbConnect.InitializeDB;
 
 /**
  *
@@ -18,6 +19,7 @@ public class JokerGameStats {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Test Message 1");
+        Dbconnect;
         DbConnect.connect();
         InitializeDB();
     }

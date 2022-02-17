@@ -58,7 +58,7 @@ public final class DbConnect
      * Διαδικασία αρχικοποίησης της ΒΔ(Δημιουργία πινάκων)
      * @return 
      */
-    public boolean InitializeDB() {
+    public static void InitializeDB() {
         
         boolean err=false;
         //Μεταβλητή τύπου Connection στην οποία καταχωρούμε το Connection String
@@ -84,25 +84,13 @@ public final class DbConnect
                           " GAMEID INTEGER PRIMARY KEY,\n" +
                           " GAMENAME VARCHAR(3))\n";
             stmt.executeUpdate(sql1);
-           
-           // Δημιουργία των Intexes
-            sql1="\n create unique index GAMES_GAMEID_UINDEX on GAMES (GAMEID)";
-            stmt.executeUpdate(sql1);
-           
-            sql1="\n create unique index GAMES_GAMENAME_UINDEX on GAMES (GAMENAME)";
-            stmt.executeUpdate(sql1);
-            
-            sql1="\n alter table GAMES " +
-                "   add constraint GAMES_PK " +
-                "       primary key (GAMEID) \n";    
-            stmt.executeUpdate(sql1);            
-            
+
             // Δημιουργία του πίνακα DRAWS
             String sql2="\n CREATE TABLE DRAWS(\n" +
                         " DRAWID INTEGER PRIMARY KEY,\n" +
                         " GAMEID INTEGER\n" +
-                        " CONSTRAINT GAMEID\n" +
-                        " REFERENCES GAMES,\n" +
+                            " CONSTRAINT GAMEID\n" +
+                            " REFERENCES GAMES,\n" +
                         " DRAWTIME INTEGER,\n" +
                         " STATUS VARCHAR(20),\n" +
                         " DRAWBREAK VARCHAR(20),\n" +
@@ -120,8 +108,8 @@ public final class DbConnect
                         " PID INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY(START WITH 1, INCREMENT BY 1),\n" +
                         " CATEGORYID INTEGER,\n" +
                         " DRAWID INTEGER\n" +
-                        " CONSTRAINT DRAWID\n" +
-                        " REFERENCES DRAWS,\n" +
+                            " CONSTRAINT DRAWID\n" +
+                            " REFERENCES DRAWS,\n" +
                         " DIVIDENT FLOAT,\n" +
                         " WINNERS INTEGER,\n" +
                         " DISTRIBUT FLOAT,\n" +
@@ -181,7 +169,7 @@ public final class DbConnect
         }
 
         //Επίστρέφουμε ότι η διαδικασία ολοκληρώθηκε χωρίς σφάλματα
-        return err;
+        //return err;
     }
     
 }
