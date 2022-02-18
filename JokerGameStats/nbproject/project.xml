@@ -9,6 +9,9 @@
             </source-roots>
             <test-roots>
                 <root id="test.src.dir"/>
+                <root id="test.fani.dir"/>
+                <root id="test.giannis.dir"/>
+                <root id="test.giorgos.dir"/>
             </test-roots>
         </data>
     </configuration>
