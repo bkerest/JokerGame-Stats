@@ -1,24 +1,7 @@
-Fri Feb 18 22:33:57 EET 2022 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
+Mon Feb 21 22:26:51 EET 2022 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Fri Feb 18 22:33:58 EET 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017f-0e8a-9609-0000533b8714 
-on database directory C:\Users\vker\OneDrive\Έγγραφα\NetBeansProjects\JokerGameStats\db\jokergame with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
-Loaded from file:/C:/Apache/db-derby-10.14.2.0/lib/derby.jar
-java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_311-b11
-user.dir=C:\Apache\db-derby-10.14.2.0
-os.name=Windows 10
-os.arch=amd64
-os.version=10.0
-derby.system.home=C:\Users\vker\OneDrive\Έγγραφα\NetBeansProjects\JokerGameStats\db
-Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Fri Feb 18 22:33:59 EET 2022:
-Shutting down instance a816c00e-017f-0e8a-9609-0000533b8714 on database directory C:\Users\vker\OneDrive\Έγγραφα\NetBeansProjects\JokerGameStats\db\jokergame with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
-Fri Feb 18 22:33:59 EET 2022 Thread[DRDAConnThread_3,5,main] (DATABASE = jokergame), (DRDAID = {2}), Database 'jokergame' shutdown.
-----------------------------------------------------------------
-Fri Feb 18 22:34:01 EET 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance 6ede40af-017f-0e8a-9609-0000533b8714 
+Mon Feb 21 22:26:57 EET 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017f-1df7-295a-0000533b8714 
 on database directory C:\Users\vker\OneDrive\Έγγραφα\NetBeansProjects\JokerGameStats\db\jokergame with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
 Loaded from file:/C:/Apache/db-derby-10.14.2.0/lib/derby.jar
 java.vendor=Oracle Corporation
