@@ -1,4 +1,4 @@
-package Controllers.exceptions;
+package jokergamestats;
 
 import java.util.ArrayList;
 import java.util.List;

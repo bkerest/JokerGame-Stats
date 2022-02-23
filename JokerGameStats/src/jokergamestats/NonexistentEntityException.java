@@ -1,4 +1,4 @@
-package Controllers.exceptions;
+package jokergamestats;
 
 public class NonexistentEntityException extends Exception {
     public NonexistentEntityException(String message, Throwable cause) {

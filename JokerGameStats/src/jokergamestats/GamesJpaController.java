@@ -3,17 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controllers;
+package jokergamestats;
 
-import Controllers.exceptions.NonexistentEntityException;
-import Controllers.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import Database.Draws;
-import Database.Games;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;

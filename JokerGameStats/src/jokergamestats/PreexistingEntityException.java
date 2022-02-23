@@ -1,4 +1,4 @@
-package Controllers.exceptions;
+package jokergamestats;
 
 public class PreexistingEntityException extends Exception {
     public PreexistingEntityException(String message, Throwable cause) {

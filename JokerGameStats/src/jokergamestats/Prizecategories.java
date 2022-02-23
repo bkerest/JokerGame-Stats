@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Database;
+package jokergamestats;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
