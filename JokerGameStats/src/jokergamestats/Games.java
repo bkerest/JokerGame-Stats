@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Database;
+package jokergamestats;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author vker
+ * @author gkiop
  */
 @Entity
 @Table(name = "GAMES")
@@ -39,7 +39,7 @@ public class Games implements Serializable {
     @Column(name = "GAMENAME")
     private String gamename;
     @OneToMany(mappedBy = "gameid")
-    private List<Draws> drawsList;
+    private Collection<Draws> drawsCollection;
 
     public Games() {
     }
@@ -65,12 +65,12 @@ public class Games implements Serializable {
     }
 
     @XmlTransient
-    public List<Draws> getDrawsList() {
-        return drawsList;
+    public Collection<Draws> getDrawsCollection() {
+        return drawsCollection;
     }
 
-    public void setDrawsList(List<Draws> drawsList) {
-        this.drawsList = drawsList;
+    public void setDrawsCollection(Collection<Draws> drawsCollection) {
+        this.drawsCollection = drawsCollection;
     }
 
     @Override
@@ -95,7 +95,7 @@ public class Games implements Serializable {
 
     @Override
     public String toString() {
-        return "Database.Games[ gameid=" + gameid + " ]";
+        return "jokergamestats.Games[ gameid=" + gameid + " ]";
     }
     
 }

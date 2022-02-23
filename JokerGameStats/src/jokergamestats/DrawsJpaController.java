@@ -3,26 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controllers;
+package jokergamestats;
 
-import Controllers.exceptions.NonexistentEntityException;
-import Controllers.exceptions.PreexistingEntityException;
-import Database.Draws;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import Database.Games;
-import Database.Prizecategories;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import jokergamestats.exceptions.NonexistentEntityException;
+import jokergamestats.exceptions.PreexistingEntityException;
 
 /**
  *
- * @author vker
+ * @author gkiop
  */
 public class DrawsJpaController implements Serializable {
 
@@ -36,8 +34,8 @@ public class DrawsJpaController implements Serializable {
     }
 
     public void create(Draws draws) throws PreexistingEntityException, Exception {
-        if (draws.getPrizecategoriesList() == null) {
-            draws.setPrizecategoriesList(new ArrayList<Prizecategories>());
+        if (draws.getPrizecategoriesCollection() == null) {
+            draws.setPrizecategoriesCollection(new ArrayList<Prizecategories>());
         }
         EntityManager em = null;
         try {
@@ -48,24 +46,24 @@ public class DrawsJpaController implements Serializable {
                 gameid = em.getReference(gameid.getClass(), gameid.getGameid());
                 draws.setGameid(gameid);
             }
-            List<Prizecategories> attachedPrizecategoriesList = new ArrayList<Prizecategories>();
-            for (Prizecategories prizecategoriesListPrizecategoriesToAttach : draws.getPrizecategoriesList()) {
-                prizecategoriesListPrizecategoriesToAttach = em.getReference(prizecategoriesListPrizecategoriesToAttach.getClass(), prizecategoriesListPrizecategoriesToAttach.getPid());
-                attachedPrizecategoriesList.add(prizecategoriesListPrizecategoriesToAttach);
+            Collection<Prizecategories> attachedPrizecategoriesCollection = new ArrayList<Prizecategories>();
+            for (Prizecategories prizecategoriesCollectionPrizecategoriesToAttach : draws.getPrizecategoriesCollection()) {
+                prizecategoriesCollectionPrizecategoriesToAttach = em.getReference(prizecategoriesCollectionPrizecategoriesToAttach.getClass(), prizecategoriesCollectionPrizecategoriesToAttach.getPid());
+                attachedPrizecategoriesCollection.add(prizecategoriesCollectionPrizecategoriesToAttach);
             }
-            draws.setPrizecategoriesList(attachedPrizecategoriesList);
+            draws.setPrizecategoriesCollection(attachedPrizecategoriesCollection);
             em.persist(draws);
             if (gameid != null) {
-                gameid.getDrawsList().add(draws);
+                gameid.getDrawsCollection().add(draws);
                 gameid = em.merge(gameid);
             }
-            for (Prizecategories prizecategoriesListPrizecategories : draws.getPrizecategoriesList()) {
-                Draws oldDrawidOfPrizecategoriesListPrizecategories = prizecategoriesListPrizecategories.getDrawid();
-                prizecategoriesListPrizecategories.setDrawid(draws);
-                prizecategoriesListPrizecategories = em.merge(prizecategoriesListPrizecategories);
-                if (oldDrawidOfPrizecategoriesListPrizecategories != null) {
-                    oldDrawidOfPrizecategoriesListPrizecategories.getPrizecategoriesList().remove(prizecategoriesListPrizecategories);
-                    oldDrawidOfPrizecategoriesListPrizecategories = em.merge(oldDrawidOfPrizecategoriesListPrizecategories);
+            for (Prizecategories prizecategoriesCollectionPrizecategories : draws.getPrizecategoriesCollection()) {
+                Draws oldDrawidOfPrizecategoriesCollectionPrizecategories = prizecategoriesCollectionPrizecategories.getDrawid();
+                prizecategoriesCollectionPrizecategories.setDrawid(draws);
+                prizecategoriesCollectionPrizecategories = em.merge(prizecategoriesCollectionPrizecategories);
+                if (oldDrawidOfPrizecategoriesCollectionPrizecategories != null) {
+                    oldDrawidOfPrizecategoriesCollectionPrizecategories.getPrizecategoriesCollection().remove(prizecategoriesCollectionPrizecategories);
+                    oldDrawidOfPrizecategoriesCollectionPrizecategories = em.merge(oldDrawidOfPrizecategoriesCollectionPrizecategories);
                 }
             }
             em.getTransaction().commit();
@@ -89,42 +87,42 @@ public class DrawsJpaController implements Serializable {
             Draws persistentDraws = em.find(Draws.class, draws.getDrawid());
             Games gameidOld = persistentDraws.getGameid();
             Games gameidNew = draws.getGameid();
-            List<Prizecategories> prizecategoriesListOld = persistentDraws.getPrizecategoriesList();
-            List<Prizecategories> prizecategoriesListNew = draws.getPrizecategoriesList();
+            Collection<Prizecategories> prizecategoriesCollectionOld = persistentDraws.getPrizecategoriesCollection();
+            Collection<Prizecategories> prizecategoriesCollectionNew = draws.getPrizecategoriesCollection();
             if (gameidNew != null) {
                 gameidNew = em.getReference(gameidNew.getClass(), gameidNew.getGameid());
                 draws.setGameid(gameidNew);
             }
-            List<Prizecategories> attachedPrizecategoriesListNew = new ArrayList<Prizecategories>();
-            for (Prizecategories prizecategoriesListNewPrizecategoriesToAttach : prizecategoriesListNew) {
-                prizecategoriesListNewPrizecategoriesToAttach = em.getReference(prizecategoriesListNewPrizecategoriesToAttach.getClass(), prizecategoriesListNewPrizecategoriesToAttach.getPid());
-                attachedPrizecategoriesListNew.add(prizecategoriesListNewPrizecategoriesToAttach);
+            Collection<Prizecategories> attachedPrizecategoriesCollectionNew = new ArrayList<Prizecategories>();
+            for (Prizecategories prizecategoriesCollectionNewPrizecategoriesToAttach : prizecategoriesCollectionNew) {
+                prizecategoriesCollectionNewPrizecategoriesToAttach = em.getReference(prizecategoriesCollectionNewPrizecategoriesToAttach.getClass(), prizecategoriesCollectionNewPrizecategoriesToAttach.getPid());
+                attachedPrizecategoriesCollectionNew.add(prizecategoriesCollectionNewPrizecategoriesToAttach);
             }
-            prizecategoriesListNew = attachedPrizecategoriesListNew;
-            draws.setPrizecategoriesList(prizecategoriesListNew);
+            prizecategoriesCollectionNew = attachedPrizecategoriesCollectionNew;
+            draws.setPrizecategoriesCollection(prizecategoriesCollectionNew);
             draws = em.merge(draws);
             if (gameidOld != null && !gameidOld.equals(gameidNew)) {
-                gameidOld.getDrawsList().remove(draws);
+                gameidOld.getDrawsCollection().remove(draws);
                 gameidOld = em.merge(gameidOld);
             }
             if (gameidNew != null && !gameidNew.equals(gameidOld)) {
-                gameidNew.getDrawsList().add(draws);
+                gameidNew.getDrawsCollection().add(draws);
                 gameidNew = em.merge(gameidNew);
             }
-            for (Prizecategories prizecategoriesListOldPrizecategories : prizecategoriesListOld) {
-                if (!prizecategoriesListNew.contains(prizecategoriesListOldPrizecategories)) {
-                    prizecategoriesListOldPrizecategories.setDrawid(null);
-                    prizecategoriesListOldPrizecategories = em.merge(prizecategoriesListOldPrizecategories);
+            for (Prizecategories prizecategoriesCollectionOldPrizecategories : prizecategoriesCollectionOld) {
+                if (!prizecategoriesCollectionNew.contains(prizecategoriesCollectionOldPrizecategories)) {
+                    prizecategoriesCollectionOldPrizecategories.setDrawid(null);
+                    prizecategoriesCollectionOldPrizecategories = em.merge(prizecategoriesCollectionOldPrizecategories);
                 }
             }
-            for (Prizecategories prizecategoriesListNewPrizecategories : prizecategoriesListNew) {
-                if (!prizecategoriesListOld.contains(prizecategoriesListNewPrizecategories)) {
-                    Draws oldDrawidOfPrizecategoriesListNewPrizecategories = prizecategoriesListNewPrizecategories.getDrawid();
-                    prizecategoriesListNewPrizecategories.setDrawid(draws);
-                    prizecategoriesListNewPrizecategories = em.merge(prizecategoriesListNewPrizecategories);
-                    if (oldDrawidOfPrizecategoriesListNewPrizecategories != null && !oldDrawidOfPrizecategoriesListNewPrizecategories.equals(draws)) {
-                        oldDrawidOfPrizecategoriesListNewPrizecategories.getPrizecategoriesList().remove(prizecategoriesListNewPrizecategories);
-                        oldDrawidOfPrizecategoriesListNewPrizecategories = em.merge(oldDrawidOfPrizecategoriesListNewPrizecategories);
+            for (Prizecategories prizecategoriesCollectionNewPrizecategories : prizecategoriesCollectionNew) {
+                if (!prizecategoriesCollectionOld.contains(prizecategoriesCollectionNewPrizecategories)) {
+                    Draws oldDrawidOfPrizecategoriesCollectionNewPrizecategories = prizecategoriesCollectionNewPrizecategories.getDrawid();
+                    prizecategoriesCollectionNewPrizecategories.setDrawid(draws);
+                    prizecategoriesCollectionNewPrizecategories = em.merge(prizecategoriesCollectionNewPrizecategories);
+                    if (oldDrawidOfPrizecategoriesCollectionNewPrizecategories != null && !oldDrawidOfPrizecategoriesCollectionNewPrizecategories.equals(draws)) {
+                        oldDrawidOfPrizecategoriesCollectionNewPrizecategories.getPrizecategoriesCollection().remove(prizecategoriesCollectionNewPrizecategories);
+                        oldDrawidOfPrizecategoriesCollectionNewPrizecategories = em.merge(oldDrawidOfPrizecategoriesCollectionNewPrizecategories);
                     }
                 }
             }
@@ -159,13 +157,13 @@ public class DrawsJpaController implements Serializable {
             }
             Games gameid = draws.getGameid();
             if (gameid != null) {
-                gameid.getDrawsList().remove(draws);
+                gameid.getDrawsCollection().remove(draws);
                 gameid = em.merge(gameid);
             }
-            List<Prizecategories> prizecategoriesList = draws.getPrizecategoriesList();
-            for (Prizecategories prizecategoriesListPrizecategories : prizecategoriesList) {
-                prizecategoriesListPrizecategories.setDrawid(null);
-                prizecategoriesListPrizecategories = em.merge(prizecategoriesListPrizecategories);
+            Collection<Prizecategories> prizecategoriesCollection = draws.getPrizecategoriesCollection();
+            for (Prizecategories prizecategoriesCollectionPrizecategories : prizecategoriesCollection) {
+                prizecategoriesCollectionPrizecategories.setDrawid(null);
+                prizecategoriesCollectionPrizecategories = em.merge(prizecategoriesCollectionPrizecategories);
             }
             em.remove(draws);
             em.getTransaction().commit();

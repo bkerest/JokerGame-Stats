@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Database;
+package jokergamestats;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author vker
+ * @author gkiop
  */
 @Entity
 @Table(name = "PRIZECATEGORIES")
@@ -175,7 +175,7 @@ public class Prizecategories implements Serializable {
 
     @Override
     public String toString() {
-        return "Database.Prizecategories[ pid=" + pid + " ]";
+        return "jokergamestats.Prizecategories[ pid=" + pid + " ]";
     }
     
 }

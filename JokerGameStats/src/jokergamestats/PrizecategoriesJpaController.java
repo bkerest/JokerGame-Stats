@@ -3,23 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controllers;
+package jokergamestats;
 
-import Controllers.exceptions.NonexistentEntityException;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import Database.Draws;
-import Database.Prizecategories;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
+import jokergamestats.exceptions.NonexistentEntityException;
 
 /**
  *
- * @author vker
+ * @author gkiop
  */
 public class PrizecategoriesJpaController implements Serializable {
 
@@ -44,7 +42,7 @@ public class PrizecategoriesJpaController implements Serializable {
             }
             em.persist(prizecategories);
             if (drawid != null) {
-                drawid.getPrizecategoriesList().add(prizecategories);
+                drawid.getPrizecategoriesCollection().add(prizecategories);
                 drawid = em.merge(drawid);
             }
             em.getTransaction().commit();
@@ -69,11 +67,11 @@ public class PrizecategoriesJpaController implements Serializable {
             }
             prizecategories = em.merge(prizecategories);
             if (drawidOld != null && !drawidOld.equals(drawidNew)) {
-                drawidOld.getPrizecategoriesList().remove(prizecategories);
+                drawidOld.getPrizecategoriesCollection().remove(prizecategories);
                 drawidOld = em.merge(drawidOld);
             }
             if (drawidNew != null && !drawidNew.equals(drawidOld)) {
-                drawidNew.getPrizecategoriesList().add(prizecategories);
+                drawidNew.getPrizecategoriesCollection().add(prizecategories);
                 drawidNew = em.merge(drawidNew);
             }
             em.getTransaction().commit();
@@ -107,7 +105,7 @@ public class PrizecategoriesJpaController implements Serializable {
             }
             Draws drawid = prizecategories.getDrawid();
             if (drawid != null) {
-                drawid.getPrizecategoriesList().remove(prizecategories);
+                drawid.getPrizecategoriesCollection().remove(prizecategories);
                 drawid = em.merge(drawid);
             }
             em.remove(prizecategories);

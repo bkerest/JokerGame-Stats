@@ -3,25 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controllers;
+package jokergamestats;
 
-import Controllers.exceptions.NonexistentEntityException;
-import Controllers.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import Database.Draws;
-import Database.Games;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import jokergamestats.exceptions.NonexistentEntityException;
+import jokergamestats.exceptions.PreexistingEntityException;
 
 /**
  *
- * @author vker
+ * @author gkiop
  */
 public class GamesJpaController implements Serializable {
 
@@ -35,27 +34,27 @@ public class GamesJpaController implements Serializable {
     }
 
     public void create(Games games) throws PreexistingEntityException, Exception {
-        if (games.getDrawsList() == null) {
-            games.setDrawsList(new ArrayList<Draws>());
+        if (games.getDrawsCollection() == null) {
+            games.setDrawsCollection(new ArrayList<Draws>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            List<Draws> attachedDrawsList = new ArrayList<Draws>();
-            for (Draws drawsListDrawsToAttach : games.getDrawsList()) {
-                drawsListDrawsToAttach = em.getReference(drawsListDrawsToAttach.getClass(), drawsListDrawsToAttach.getDrawid());
-                attachedDrawsList.add(drawsListDrawsToAttach);
+            Collection<Draws> attachedDrawsCollection = new ArrayList<Draws>();
+            for (Draws drawsCollectionDrawsToAttach : games.getDrawsCollection()) {
+                drawsCollectionDrawsToAttach = em.getReference(drawsCollectionDrawsToAttach.getClass(), drawsCollectionDrawsToAttach.getDrawid());
+                attachedDrawsCollection.add(drawsCollectionDrawsToAttach);
             }
-            games.setDrawsList(attachedDrawsList);
+            games.setDrawsCollection(attachedDrawsCollection);
             em.persist(games);
-            for (Draws drawsListDraws : games.getDrawsList()) {
-                Games oldGameidOfDrawsListDraws = drawsListDraws.getGameid();
-                drawsListDraws.setGameid(games);
-                drawsListDraws = em.merge(drawsListDraws);
-                if (oldGameidOfDrawsListDraws != null) {
-                    oldGameidOfDrawsListDraws.getDrawsList().remove(drawsListDraws);
-                    oldGameidOfDrawsListDraws = em.merge(oldGameidOfDrawsListDraws);
+            for (Draws drawsCollectionDraws : games.getDrawsCollection()) {
+                Games oldGameidOfDrawsCollectionDraws = drawsCollectionDraws.getGameid();
+                drawsCollectionDraws.setGameid(games);
+                drawsCollectionDraws = em.merge(drawsCollectionDraws);
+                if (oldGameidOfDrawsCollectionDraws != null) {
+                    oldGameidOfDrawsCollectionDraws.getDrawsCollection().remove(drawsCollectionDraws);
+                    oldGameidOfDrawsCollectionDraws = em.merge(oldGameidOfDrawsCollectionDraws);
                 }
             }
             em.getTransaction().commit();
@@ -77,30 +76,30 @@ public class GamesJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Games persistentGames = em.find(Games.class, games.getGameid());
-            List<Draws> drawsListOld = persistentGames.getDrawsList();
-            List<Draws> drawsListNew = games.getDrawsList();
-            List<Draws> attachedDrawsListNew = new ArrayList<Draws>();
-            for (Draws drawsListNewDrawsToAttach : drawsListNew) {
-                drawsListNewDrawsToAttach = em.getReference(drawsListNewDrawsToAttach.getClass(), drawsListNewDrawsToAttach.getDrawid());
-                attachedDrawsListNew.add(drawsListNewDrawsToAttach);
+            Collection<Draws> drawsCollectionOld = persistentGames.getDrawsCollection();
+            Collection<Draws> drawsCollectionNew = games.getDrawsCollection();
+            Collection<Draws> attachedDrawsCollectionNew = new ArrayList<Draws>();
+            for (Draws drawsCollectionNewDrawsToAttach : drawsCollectionNew) {
+                drawsCollectionNewDrawsToAttach = em.getReference(drawsCollectionNewDrawsToAttach.getClass(), drawsCollectionNewDrawsToAttach.getDrawid());
+                attachedDrawsCollectionNew.add(drawsCollectionNewDrawsToAttach);
             }
-            drawsListNew = attachedDrawsListNew;
-            games.setDrawsList(drawsListNew);
+            drawsCollectionNew = attachedDrawsCollectionNew;
+            games.setDrawsCollection(drawsCollectionNew);
             games = em.merge(games);
-            for (Draws drawsListOldDraws : drawsListOld) {
-                if (!drawsListNew.contains(drawsListOldDraws)) {
-                    drawsListOldDraws.setGameid(null);
-                    drawsListOldDraws = em.merge(drawsListOldDraws);
+            for (Draws drawsCollectionOldDraws : drawsCollectionOld) {
+                if (!drawsCollectionNew.contains(drawsCollectionOldDraws)) {
+                    drawsCollectionOldDraws.setGameid(null);
+                    drawsCollectionOldDraws = em.merge(drawsCollectionOldDraws);
                 }
             }
-            for (Draws drawsListNewDraws : drawsListNew) {
-                if (!drawsListOld.contains(drawsListNewDraws)) {
-                    Games oldGameidOfDrawsListNewDraws = drawsListNewDraws.getGameid();
-                    drawsListNewDraws.setGameid(games);
-                    drawsListNewDraws = em.merge(drawsListNewDraws);
-                    if (oldGameidOfDrawsListNewDraws != null && !oldGameidOfDrawsListNewDraws.equals(games)) {
-                        oldGameidOfDrawsListNewDraws.getDrawsList().remove(drawsListNewDraws);
-                        oldGameidOfDrawsListNewDraws = em.merge(oldGameidOfDrawsListNewDraws);
+            for (Draws drawsCollectionNewDraws : drawsCollectionNew) {
+                if (!drawsCollectionOld.contains(drawsCollectionNewDraws)) {
+                    Games oldGameidOfDrawsCollectionNewDraws = drawsCollectionNewDraws.getGameid();
+                    drawsCollectionNewDraws.setGameid(games);
+                    drawsCollectionNewDraws = em.merge(drawsCollectionNewDraws);
+                    if (oldGameidOfDrawsCollectionNewDraws != null && !oldGameidOfDrawsCollectionNewDraws.equals(games)) {
+                        oldGameidOfDrawsCollectionNewDraws.getDrawsCollection().remove(drawsCollectionNewDraws);
+                        oldGameidOfDrawsCollectionNewDraws = em.merge(oldGameidOfDrawsCollectionNewDraws);
                     }
                 }
             }
@@ -133,10 +132,10 @@ public class GamesJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The games with id " + id + " no longer exists.", enfe);
             }
-            List<Draws> drawsList = games.getDrawsList();
-            for (Draws drawsListDraws : drawsList) {
-                drawsListDraws.setGameid(null);
-                drawsListDraws = em.merge(drawsListDraws);
+            Collection<Draws> drawsCollection = games.getDrawsCollection();
+            for (Draws drawsCollectionDraws : drawsCollection) {
+                drawsCollectionDraws.setGameid(null);
+                drawsCollectionDraws = em.merge(drawsCollectionDraws);
             }
             em.remove(games);
             em.getTransaction().commit();

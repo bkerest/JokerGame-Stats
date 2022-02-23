@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Database;
+package jokergamestats;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author vker
+ * @author gkiop
  */
 @Entity
 @Table(name = "DRAWS")
@@ -71,7 +71,7 @@ public class Draws implements Serializable {
     @ManyToOne
     private Games gameid;
     @OneToMany(mappedBy = "drawid")
-    private List<Prizecategories> prizecategoriesList;
+    private Collection<Prizecategories> prizecategoriesCollection;
 
     public Draws() {
     }
@@ -177,12 +177,12 @@ public class Draws implements Serializable {
     }
 
     @XmlTransient
-    public List<Prizecategories> getPrizecategoriesList() {
-        return prizecategoriesList;
+    public Collection<Prizecategories> getPrizecategoriesCollection() {
+        return prizecategoriesCollection;
     }
 
-    public void setPrizecategoriesList(List<Prizecategories> prizecategoriesList) {
-        this.prizecategoriesList = prizecategoriesList;
+    public void setPrizecategoriesCollection(Collection<Prizecategories> prizecategoriesCollection) {
+        this.prizecategoriesCollection = prizecategoriesCollection;
     }
 
     @Override
@@ -207,7 +207,7 @@ public class Draws implements Serializable {
 
     @Override
     public String toString() {
-        return "Database.Draws[ drawid=" + drawid + " ]";
+        return "jokergamestats.Draws[ drawid=" + drawid + " ]";
     }
     
 }
