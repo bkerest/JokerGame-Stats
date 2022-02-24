@@ -5,20 +5,13 @@
  */
 
 package jokergamestats;
-import java.util.List;
-import javax.persistence.*;
 
 /**
  *
  * @author vker
  */
 public class JokerGameStats {
-    static EntityManagerFactory emf;
-    static EntityManager em;
-    private static void createEMFandEM() {
-        emf = Persistence.createEntityManagerFactory(JokerGameStatsPU);
-        em = emf.createEntityManager();
-    }
+    
 
     /**
      * @param args the command line arguments
