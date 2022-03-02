@@ -6,6 +6,7 @@
 
 package jokergamestats;
 
+
 /**
  *
  * @author vker
@@ -17,8 +18,10 @@ public class JokerGameStats {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        System.out.println("Test Message 1");
+        // Τρέχουμε το αρχικό JFrame
+        JokerJFrame jokerJFrame = new JokerJFrame();
+        jokerJFrame.setVisible(true);
+               
     }
     
 }
