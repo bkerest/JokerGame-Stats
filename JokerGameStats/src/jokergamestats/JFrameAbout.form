@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="0"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace pref="457" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="303" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="button4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="345" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jScrollPane2" min="-2" pref="411" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="282" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jScrollPane2" min="-2" pref="319" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="button4" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="60" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Images/EAP.png"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="java.awt.Button" name="button4">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="62" green="c4" red="ff" type="rgb"/>
+        </Property>
+        <Property name="label" type="java.lang.String" value="&#x395;&#x3c0;&#x3b9;&#x3c3;&#x3c4;&#x3c1;&#x3bf;&#x3c6;&#x3ae; &#x3c3;&#x3c4;&#x3bf; &#x3bc;&#x3b5;&#x3bd;&#x3bf;&#x3cd; &#x3b5;&#x3c0;&#x3b9;&#x3bb;&#x3bf;&#x3b3;&#x3ae;&#x3c2; &#x3c0;&#x3b1;&#x3b9;&#x3c7;&#x3bd;&#x3b9;&#x3b4;&#x3b9;&#x3bf;&#x3cd; &#x39f;&#x3a0;&#x391;&#x3a0;"/>
+        <Property name="name" type="java.lang.String" value="button1" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button4ActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextPane" name="jTextPane1">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" value="&#x395;&#x39b;&#x39b;&#x397;&#x39d;&#x399;&#x39a;&#x39f; &#x391;&#x39d;&#x39f;&#x399;&#x3a7;&#x3a4;&#x39f; &#x3a0;&#x391;&#x39d;&#x395;&#x3a0;&#x399;&#x3a3;&#x3a4;&#x399;&#x39c;&#x39f;&#xa;&#x3a3;&#x3a7;&#x39f;&#x39b;&#x397; &#x398;&#x395;&#x3a4;&#x399;&#x39a;&#x3a9;&#x39d; &#x395;&#x3a0;&#x399;&#x3a3;&#x3a4;&#x397;&#x39c;&#x3a9;&#x39d; &#x39a;&#x391;&#x399; &#x3a4;&#x395;&#x3a7;&#x39d;&#x39f;&#x39b;&#x39f;&#x393;&#x399;&#x391;&#x3a3;&#xa;&#x3a4;&#x39c;&#x397;&#x39c;&#x391; &#x3a0;&#x39b;&#x397;&#x3a1;&#x39f;&#x3a6;&#x39f;&#x3a1;&#x399;&#x39a;&#x397;&#x3a3;&#xa;&#xa;&#xa;&#x398;&#x395;&#x39c;&#x391;&#x3a4;&#x399;&#x39a;&#x397; &#x3a0;&#x39b;&#x397;24&#xa;&#xa;&#x391;&#x39a;&#x391;&#x394;&#x397;&#x39c;&#x391;&#x3aa;&#x39a;&#x39f; &#x395;&#x3a4;&#x39f;&#x3a3;: 2021 - 2022&#xa;&#x3a4;&#x39c;&#x397;&#x39c;&#x391;: &#x397;&#x39b;&#x395;47&#xa;&#xa;&#x3a3;&#x395;&#x3a0;: &#x3a3;&#x3a5;&#x3a1;&#x39c;&#x391;&#x39a;&#x395;&#x3a3;&#x397;&#x3a3; &#x3a3;&#x3a0;&#x3a5;&#x3a1;&#x399;&#x394;&#x3a9;&#x39d;&#xa;&#xa;SCRUM MASTER: &#x39a;&#x395;&#x3a1;&#x395;&#x3a3;&#x3a4;&#x395;&#x3a4;&#x396;&#x397;&#x3a3; &#x392;&#x391;&#x3a3;&#x399;&#x39b;&#x395;&#x399;&#x39f;&#x3a3; (email: std094939@ac.eap.gr)&#xa;&#xa;&#x39c;&#x395;&#x39b;&#x397;:&#xa;&#x39a;&#x39f;&#x39d;&#x3a4;&#x39f;&#x3a5; &#x3a6;&#x391;&#x39d;&#x397; (email: std137649@ac.eap.gr)&#xa;&#x39a;&#x399;&#x39f;&#x3a0;&#x395;&#x39a;&#x3a4;&#x396;&#x397;&#x3a3; &#x393;&#x395;&#x3a9;&#x3a1;&#x393;&#x399;&#x39f;&#x3a3; (email: std119054@ac.eap.gr)&#xa;&#x3a3;&#x3a5;&#x39a;&#x391;&#x3a1;&#x391;&#x3a3; &#x399;&#x3a9;&#x391;&#x39d;&#x39d;&#x397;&#x3a3; (email: std142860@ac.eap.gr)"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
