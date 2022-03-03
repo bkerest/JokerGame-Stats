@@ -28,26 +28,27 @@ public class JFrameAbout extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        button4 = new java.awt.Button();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/EAP.png"))); // NOI18N
 
-        button4.setBackground(new java.awt.Color(255, 196, 98));
-        button4.setLabel("Επιστροφή στο μενού επιλογής παιχνιδιού ΟΠΑΠ");
-        button4.setName("button1"); // NOI18N
-        button4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button4ActionPerformed(evt);
-            }
-        });
-
         jTextPane1.setEditable(false);
         jTextPane1.setText("ΕΛΛΗΝΙΚΟ ΑΝΟΙΧΤΟ ΠΑΝΕΠΙΣΤΙΜΟ\nΣΧΟΛΗ ΘΕΤΙΚΩΝ ΕΠΙΣΤΗΜΩΝ ΚΑΙ ΤΕΧΝΟΛΟΓΙΑΣ\nΤΜΗΜΑ ΠΛΗΡΟΦΟΡΙΚΗΣ\n\n\nΘΕΜΑΤΙΚΗ ΠΛΗ24\n\nΑΚΑΔΗΜΑΪΚΟ ΕΤΟΣ: 2021 - 2022\nΤΜΗΜΑ: ΗΛΕ47\n\nΣΕΠ: ΣΥΡΜΑΚΕΣΗΣ ΣΠΥΡΙΔΩΝ\n\nSCRUM MASTER: ΚΕΡΕΣΤΕΤΖΗΣ ΒΑΣΙΛΕΙΟΣ (email: std094939@ac.eap.gr)\n\nΜΕΛΗ:\nΚΟΝΤΟΥ ΦΑΝΗ (email: std137649@ac.eap.gr)\nΚΙΟΠΕΚΤΖΗΣ ΓΕΩΡΓΙΟΣ (email: std119054@ac.eap.gr)\nΣΥΚΑΡΑΣ ΙΩΑΝΝΗΣ (email: std142860@ac.eap.gr)");
         jScrollPane2.setViewportView(jTextPane1);
+
+        jButton4.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
+        jButton4.setMnemonic('l');
+        jButton4.setText("Επιστροφή στο μενού επιλογής παιχνιδιού ΟΠΑΠ");
+        jButton4.setToolTipText("");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,11 +61,11 @@ public class JFrameAbout extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(303, 303, 303))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(345, 345, 345))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(282, 282, 282))))
+                        .addGap(282, 282, 282))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton4)
+                        .addGap(319, 319, 319))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -73,20 +74,20 @@ public class JFrameAbout extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jButton4)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // Επιστροφή στην αρχική σελιδα
         JokerJFrame jokerJFrame = new JokerJFrame();
         jokerJFrame.setVisible(true);
         dispose();
-    }//GEN-LAST:event_button4ActionPerformed
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,7 +125,7 @@ public class JFrameAbout extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    java.awt.Button button4;
+    javax.swing.JButton jButton4;
     javax.swing.JLabel jLabel1;
     javax.swing.JScrollPane jScrollPane2;
     javax.swing.JTextPane jTextPane1;
