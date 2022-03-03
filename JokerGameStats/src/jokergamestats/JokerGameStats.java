@@ -19,7 +19,7 @@ public class JokerGameStats {
      */
     public static void main(String[] args) {
         // Τρέχουμε το αρχικό JFrame
-        JokerJFrame jokerJFrame = new JokerJFrame();
+        JokerJFrame_1 jokerJFrame = new JokerJFrame_1();
         jokerJFrame.setVisible(true);
                
     }

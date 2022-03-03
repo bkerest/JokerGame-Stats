@@ -6,6 +6,7 @@
 package jokergamestats;
 import javax.swing.*;
 import javax.swing.JOptionPane;
+import jokergamestats.JokerJFrame2;
 
 /**
  *
@@ -54,7 +55,6 @@ public class JokerJFrame extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(984, 600));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(240, 24, 24));
