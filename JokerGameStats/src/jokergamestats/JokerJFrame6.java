@@ -80,7 +80,7 @@ public class JokerJFrame6 extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ΔΙΑΧΕΙΡΙΣΗ ΔΕΔΟΜΈΝΩΝ ΤΖΟΚΕΡ");
+        jLabel1.setText("ΔΙΑΧΕΙΡΙΣΗ ΔΕΔΟΜΕΝΩΝ ΤΖΟΚΕΡ");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
