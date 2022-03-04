@@ -44,7 +44,7 @@ public class JokerJFrame4 extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ΠΡΟΒΟΛΗ ΔΕΔΟΜΕΝΩΝ ΤΖΟΚΕΡ ΑΝΑ ΜΗΝΑ ΓΙΑ ΣΥΓΚΕΚΡΙΜΈΝΟ ΕΤΟΣ");
+        jLabel1.setText("ΠΡΟΒΟΛΗ ΔΕΔΟΜΕΝΩΝ ΤΖΟΚΕΡ ΑΝΑ ΜΗΝΑ ΓΙΑ ΣΥΓΚΕΚΡΙΜΕΝΟ ΕΤΟΣ");
 
         jButton3.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
         jButton3.setText("Προβολή Δεδομένων Επιλεγμένου Έτους");
@@ -133,7 +133,9 @@ public class JokerJFrame4 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        // Μεταφερομαστε στη σελίδα των αποτελεσμάτων
+        JokerJFrame4_2 jokerJFrame4_2 = new JokerJFrame4_2(jTextField1.getText());
+        jokerJFrame4_2.setVisible(true);
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
