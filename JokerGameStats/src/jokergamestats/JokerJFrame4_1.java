@@ -10,6 +10,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import static java.lang.Integer.parseInt;
+import javax.swing.*;
+import java.awt.*;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
@@ -35,8 +37,8 @@ public class JokerJFrame4_1 extends javax.swing.JFrame {
      * @param datein
      */
 
-    public JokerJFrame4_1(String selection) throws ParseException {
-        initComponents();
+    public JokerJFrame4_1() {
+        String selection = "2022";
         String year = selection.substring(0,4);
         String[] date = null;
         String[] lastdate = null;
@@ -75,11 +77,6 @@ public class JokerJFrame4_1 extends javax.swing.JFrame {
         
         
     }
-
-    private JokerJFrame4_1() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 
 
     /**
@@ -212,10 +209,8 @@ public class JokerJFrame4_1 extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JokerJFrame4_1().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new JokerJFrame4_1().setVisible(true);
         });
     }
 

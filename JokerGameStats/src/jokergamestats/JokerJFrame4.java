@@ -134,13 +134,7 @@ public class JokerJFrame4 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        JokerJFrame4_1 j;
-        try {
-            j = new JokerJFrame4_1(jTextField1.getText());
-            j.setVisible(true);
-        } catch (ParseException ex) {
-            Logger.getLogger(JokerJFrame2.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
