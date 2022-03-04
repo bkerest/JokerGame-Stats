@@ -85,25 +85,27 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
             //Δημιουργώ ως String τα url που θα καλέσω και τα προσθέτω στο Array List
             URL[i] = ("https://api.opap.gr/draws/v3.0/5104/draw-date/" + DateStart[i] + "/" + DateEnd[i] + "/");
 
-            //Δημιουργούμε ένα αντικείμενο OkHttpClient 
+            //Δημιουργώ ένα αντικείμενο OkHttpClient 
             OkHttpClient client = new OkHttpClient();
         
-            //Δημιουργούμε ένα αντικείμενο Request με όρισμα το url που θα καλέσουμε 
+            //Δημιουργώ ένα αντικείμενο Request με όρισμα το url του μήνα (i) που θα καλέσουμε 
             Request request = new Request.Builder().url(URL[i]).build();
             
-            //Ξεκινάμε και ζητάμε το url και ελέγχουμε εάν μας φέρνει αποτελέσματα
+            /*Ζητώ το url της συγκεκριμένης επανάλληψης και 
+             *ελέγχω εάν φέρνει αποτελέσματα
+             */
             try (okhttp3.Response response = client.newCall(request).execute()) {
             if (response.isSuccessful() && response.body() != null) {
 
-                //Καταχωρούμε σε ένα String το αποτέλεσμα
+                //Καταχωρώ σε ένα String το αποτέλεσμα
                 String responseString = response.body().string();
 
-                //Δημιουργούμε ένα αντικείμενο GsonBuilder
+                //Δημιουργώ ένα αντικείμενο GsonBuilder
                 GsonBuilder builder = new GsonBuilder();
                 builder.setPrettyPrinting();
                 Gson gson = builder.create();
 
-                //Πέρνουμε τα αποτελέσματα σε JsonObject και δημιουργούμε ένα JsonArray το αρχικό "content"
+                //Πέρνώ τα αποτελέσματα σε JsonObject και δημιουργώ ένα JsonArray το αρχικό "content"
                 JsonObject json = gson.fromJson(responseString, JsonObject.class);
                 JsonArray content = json.get("content").getAsJsonArray();
                 System.out.println(json);
@@ -137,7 +139,7 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
                         }
 
                     }
-                    //Αυξάνω τα παιχνίδια έγιναν
+                    //Αυξάνω τα παιχνίδια που έγιναν
                     games++;
                     
                     //Ενημερώνω τα ArrayList για τον συγκεκριμένο μήνα
@@ -156,7 +158,7 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
         }
                        
         DefaultTableModel model1 = new DefaultTableModel();
-        //Ορίζουμε την επικεφαλίδα, εισάγουμε τους πίνακες numbers και times και ενημερώνουμε τον jTable2
+        //Ορίζω την επικεφαλίδα, εισάγουμε τους πίνακες numbers και times και ενημερώνω τον jTable1
         model1.setColumnIdentifiers(new String[]{"Ιανουάριος", "Φεβρουάριος", "Μάρτιος",
             "Απρίλιος", "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος", "Σεπτέμβριος", "Οκτώβριος", "Νοέμβριος", "Δεκέμβριος"});
         model1.addRow(SumGames);
@@ -184,6 +186,7 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -257,6 +260,11 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(240, 24, 24));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tzoker.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -285,11 +293,17 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
                                 .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(515, 515, 515))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel6)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -304,7 +318,7 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton5)
@@ -371,6 +385,7 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
     javax.swing.JLabel jLabel3;
     javax.swing.JLabel jLabel4;
     javax.swing.JLabel jLabel5;
+    javax.swing.JLabel jLabel6;
     javax.swing.JScrollPane jScrollPane1;
     javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

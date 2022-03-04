@@ -5,6 +5,16 @@
  */
 package jokergamestats;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+
 /**
  *
  * @author gkiop
@@ -16,6 +26,7 @@ public class JokerJFrame5 extends javax.swing.JFrame {
      */
     public JokerJFrame5() {
         initComponents();
+    setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -37,17 +48,20 @@ public class JokerJFrame5 extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jButton4 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1300, 600));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ΠΡΟΒΟΛΗ ΣΤΑΤΙΣΤΙΚΩΝ ΔΕΔΟΜΕΝΩΝ ΤΖΟΚΕΡ ΚΑΙ ΕΚΤΥΠΩΣΗ ΣΕ ΑΡΧΕΙΟ PDF");
 
+        jTable1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTable1.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -72,6 +86,7 @@ public class JokerJFrame5 extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
@@ -121,8 +136,11 @@ public class JokerJFrame5 extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(44).setResizable(false);
         }
 
+        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel2.setText("ΣΤΑΤΙΣΤΙΚΑ ΑΡΙΘΜΩΝ ΠΟΥ ΕΧΟΥΝ ΚΛΗΡΩΘΕΙ");
 
+        jTable2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTable2.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -147,6 +165,7 @@ public class JokerJFrame5 extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jScrollPane2.setViewportView(jTable2);
         if (jTable2.getColumnModel().getColumnCount() > 0) {
             jTable2.getColumnModel().getColumn(0).setResizable(false);
@@ -171,33 +190,53 @@ public class JokerJFrame5 extends javax.swing.JFrame {
             jTable2.getColumnModel().getColumn(19).setResizable(false);
         }
 
+        jLabel3.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel3.setText("ΣΤΑΤΙΣΤΙΚΑ ΑΡΙΘΜΩΝ ΤΖΟΚΕΡ ΠΟΥ ΕΧΟΥΝ ΚΛΗΡΩΘΕΙ");
 
-        jButton1.setText("ΠΡΟΒΟΛΗ ΣΤΑΤΙΣΤΙΚΩΝ");
+        jButton1.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
+        jButton1.setText("Προβολή Στατιστικών");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("ΕΚΤΥΠΩΣΗ ΣΕ ΑΡΧΕΙΟ PDF");
+        jButton2.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
+        jButton2.setText("Εκτύπωση Σε Αρχείο PDF");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("ΠΡΟΒΟΛΗ ΣΤΑΤΙΣΤΙΚΩΝ ΣΤΟΙΧΕΙΩΝ ΚΛΗΡΩΣΕΩΝ ΣΕ ΓΡΑΦΙΚΗ ΜΟΡΦΗ");
+        jButton3.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
+        jButton3.setText("Προβολή Στατιστικών Αποθηκευμένων Κληρώσεων Σε Γραφική Μορφή");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jButton4.setText("ΠΙΣΩ");
+        jTextArea1.setBackground(new java.awt.Color(240, 240, 240));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Στήλη 1: Αριθμοί\nΣτήλη 2: Πλήθος Εμφανίσεων\nΣτήλη 3: Καθυστέριση Εμφάνισης");
+        jTextArea1.setBorder(null);
+        jScrollPane3.setViewportView(jTextArea1);
+
+        jButton4.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
+        jButton4.setText("Επιστροφή στο Τζόκερ");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
-        jTextArea1.setBackground(new java.awt.Color(240, 240, 240));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setText("ΣΤΗΛΗ 1: ΑΡΙΘΜΟΙ\nΣΤΗΛΗ 2: ΠΛΗΘΟΣ ΕΜΦΑΝΙΣΕΩΝ\nΣΤΗΛΗ 3: ΚΑΘΥΣΤΕΡΙΣΗ ΕΜΦΑΝΙΣΗΣ");
-        jTextArea1.setBorder(null);
-        jScrollPane3.setViewportView(jTextArea1);
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(240, 24, 24));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tzoker.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -213,56 +252,51 @@ public class JokerJFrame5 extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(258, 258, 258)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton1)
                                     .addComponent(jButton2)
                                     .addComponent(jButton3)))
-                            .addComponent(jLabel3))
-                        .addGap(0, 165, Short.MAX_VALUE))))
+                            .addComponent(jLabel3)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 630, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jButton4)
+                .addGap(781, 781, 781)
+                .addComponent(jLabel6)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)))
+                        .addComponent(jButton2))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // Μεταφερομαστε στην αρχικη σελιδα του JOKER
-        JokerJFrame2 jokerJFrame2 = new JokerJFrame2();
-        jokerJFrame2.setVisible(true);  
-        //Κλεισιμο παράθυρου
-        dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Μεταφερομαστε στην σελιδα "ΠΡΟΒΟΛΗ ΣΤΑΤΙΣΤΙΚΩΝ ΣΤΟΙΧΕΙΩΝ ΚΛΗΡΩΣΕΩΝ ΣΕ ΓΡΑΦΙΚΗ ΜΟΡΦΗ"
@@ -271,6 +305,114 @@ public class JokerJFrame5 extends javax.swing.JFrame {
         //Κλεισιμο παράθυρου
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // Δημιουρώ το URL που θα καλέσω
+        String URL = "https://api.opap.gr/games/v1.0/5104/statistics";
+
+        //Δημιουργώ ένα αντικείμενο OkHttpClient 
+        OkHttpClient client = new OkHttpClient();
+        
+        //Δημιουργώ ένα αντικείμενο Request με όρισμα το URL που θα καλέσω 
+        Request request = new Request.Builder().url(URL).build();
+        
+        //Καλώ το URL και ελέγχω μας φέρνει αποτελέσματα
+        try (okhttp3.Response response = client.newCall(request).execute()) {
+            if (response.isSuccessful() && response.body() != null) {
+
+                //Καταχώ σε ένα String το αποτέλεσμα
+                String responseString = response.body().string();
+
+                //Δημιουργώ ένα αντικείμενο GsonBuilder
+                GsonBuilder builder = new GsonBuilder();
+                builder.setPrettyPrinting();
+                Gson gson = builder.create();
+
+                //Πέρνω τα αποτελέσματα σε JsonObject και δημιουργώ ένα JsonArray το "numbers"
+                JsonObject json = gson.fromJson(responseString, JsonObject.class);
+                JsonArray numbers = json.get("numbers").getAsJsonArray();
+
+                System.out.println(numbers);
+
+                //Δημιουργώ τον πίνακα για τους αριθμούς
+                DefaultTableModel modeln = new DefaultTableModel();
+
+                //Ορίζω τις επικεφαλίδες των αριθμών
+                modeln.setColumnIdentifiers(new String[]{"01", "02", "03", "04", "05", "06", "07",
+                    "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+                    "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33",
+                    "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45"});
+
+                //Δημιουργώ τους πίνακες για τις εμφανίσεις και τις καθυστερήσεις των αριθμών
+                String[] occurrences = new String[45];
+                String[] delays = new String[45];
+
+                //Counter
+                int i = 0;
+                //Διαπερνάμε τα JsonElements
+                for (JsonElement number : numbers) {
+                    JsonObject stats = number.getAsJsonObject();
+                    
+                //Καταχωρώ στον πίνακα τις Κληρώσεις και τις Καθυστερήσεις
+                    occurrences[i] = stats.get("occurrences").toString();
+                    delays[i] = stats.get("delays").toString();
+                    i++;
+                }
+
+                //Προσθέτω τις γραμμές και ενημερώνω το model
+                modeln.addRow(occurrences);
+                modeln.addRow(delays);
+                jTable1.setModel(modeln);
+                
+                //Δημιουργώ τον πίνακα για τους αριθμούς ΤΖΟΚΕΡ
+                DefaultTableModel modelj = new DefaultTableModel();
+                
+                //Ορίζω τις επικεφαλίδες των Joker
+                modelj.setColumnIdentifiers(new String[]{"01", "02", "03", "04", "05",
+                    "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", 
+                    "17", "18", "19", "20"});
+
+                //Δημιουργώ ένα JsonArray το "Joker"
+                JsonArray Joker = json.get("bonusNumbers").getAsJsonArray();
+
+                //Δημιουργώ τους πίνακες για τις εμφανίσεις και τις καθυστερήσεις των Joker
+                occurrences = new String[20];
+                delays = new String[20];
+
+                //Διαπερνώ τα JsonElements bonusNumbers
+                int j = 0;
+                for (JsonElement bonusNumber : Joker) {
+                    JsonObject stats2 = bonusNumber.getAsJsonObject();
+  
+                //Καταχωρώ στον πίνακα τις Κληρώσεις και τις Καθυστερήσεις
+                    occurrences[j] = stats2.get("occurrences").toString();
+                    delays[j] = stats2.get("delays").toString();
+                    j++;
+                }
+
+                //Προσθέτω τις γραμμές και ενημερώνω το model
+                modelj.addRow(occurrences);
+                modelj.addRow(delays);
+                jTable2.setModel(modelj);
+            }
+        }catch (Exception ex) {
+            // Ενημερωτικό μύνημα
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(null, "Δεν βρήκαμε δεδομένα", "Ενημέρωση", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // Μεταφερομαστε στην αρχικη σελιδα του JOKER
+        JokerJFrame2 jokerJFrame2 = new JokerJFrame2();
+        jokerJFrame2.setVisible(true);
+        //Κλεισιμο παράθυρου
+        dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -315,6 +457,7 @@ public class JokerJFrame5 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
