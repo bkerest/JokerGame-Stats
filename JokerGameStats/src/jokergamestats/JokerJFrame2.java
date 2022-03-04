@@ -9,9 +9,12 @@ import javax.swing.JOptionPane;
 
 
 /**
- *
- * @author gkiop
+ * @author Vasilis Kerestetzis
+ * @author Giorgos Kiopektzis
+ * @author Fani Kontou
+ * @author Giannis Sykaras
  */
+
 public class JokerJFrame2 extends javax.swing.JFrame {
 
     /**
@@ -19,6 +22,7 @@ public class JokerJFrame2 extends javax.swing.JFrame {
      */
     public JokerJFrame2() {
         initComponents();
+        setExtendedState(java.awt.Frame.MAXIMIZED_VERT);
     }
 
     /**
@@ -272,4 +276,8 @@ public class JokerJFrame2 extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     // End of variables declaration//GEN-END:variables
+
+    private void setExtendedState(float CENTER_ALIGNMENT) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

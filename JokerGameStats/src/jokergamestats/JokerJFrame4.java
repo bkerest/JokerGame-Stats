@@ -5,13 +5,11 @@
  */
 package jokergamestats;
 
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
- *
- * @author gkiop
+ * @author Vasilis Kerestetzis
+ * @author Giorgos Kiopektzis
+ * @author Fani Kontou
+ * @author Giannis Sykaras
  */
 public class JokerJFrame4 extends javax.swing.JFrame {
 
@@ -20,6 +18,7 @@ public class JokerJFrame4 extends javax.swing.JFrame {
      */
     public JokerJFrame4() {
         initComponents();
+        setExtendedState(java.awt.Frame.MAXIMIZED_VERT);
     }
 
     /**
@@ -86,7 +85,7 @@ public class JokerJFrame4 extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(418, 418, 418))
+                .addGap(438, 438, 438))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -110,9 +109,9 @@ public class JokerJFrame4 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jYearChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addGap(2, 2, 2)
+                .addGap(8, 8, 8)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3)

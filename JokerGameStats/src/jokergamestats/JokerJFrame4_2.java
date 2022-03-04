@@ -10,15 +10,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import static java.lang.Integer.parseInt;
-import javax.swing.*;
-import java.awt.*;
 import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.ParseException;
-import java.util.Date;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import okhttp3.OkHttpClient;
@@ -26,9 +18,12 @@ import okhttp3.Request;
 
 
 /**
- *
- * @author vkere
+ * @author Vasilis Kerestetzis
+ * @author Giorgos Kiopektzis
+ * @author Fani Kontou
+ * @author Giannis Sykaras
  */
+
 public class JokerJFrame4_2 extends javax.swing.JFrame {
     static String year = null;
 
@@ -39,6 +34,7 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
      */
     public JokerJFrame4_2(String year) {
         initComponents();
+        setExtendedState(java.awt.Frame.MAXIMIZED_VERT);
         jLabel5.setText(year);
         
         String month = null;
@@ -126,17 +122,17 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
                     JsonArray prizeCategories = jsonprizeCategories.get("prizeCategories").getAsJsonArray();
 
                     //Διαπερνάω τα περιεχόμενα του "prizeCategories"
-                    for (JsonElement prizeCategorie : prizeCategories) {
+                    for (JsonElement prizeCategory : prizeCategories) {
                         //Δημιουργώ ένα JsonObject για κάθε κατηγορία (0,1,2,3,4,5,6,7)
-                        JsonObject categorie = prizeCategorie.getAsJsonObject();
-                        System.out.println(categorie.get("distributed"));
+                        JsonObject category = prizeCategory.getAsJsonObject();
+                        System.out.println(category.get("distributed"));
 
                         //Εάν έχω νικητές υπολογίζω πόσα χρήματα διανεμήθηκαν
-                        if (categorie.get("winners").getAsInt() > 0) {
-                            money = money + categorie.get("distributed").getAsDouble();
+                        if (category.get("winners").getAsInt() > 0) {
+                            money = money + category.get("distributed").getAsDouble();
                         }
                         //Εάν έχω ΤΖΑΚ-ΠΟΤ αυξάνω τα ΤΖΑΚ-ΠΟΤ που έγιναν
-                        if (categorie.get("jackpot").getAsDouble() > 0) {
+                        if (category.get("jackpot").getAsDouble() > 0) {
                             jackpot++;
                         }
 

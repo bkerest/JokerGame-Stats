@@ -8,9 +8,12 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- *
- * @author gkiop
+ * @author Vasilis Kerestetzis
+ * @author Giorgos Kiopektzis
+ * @author Fani Kontou
+ * @author Giannis Sykaras
  */
+
 public class JokerJFrame extends javax.swing.JFrame {
 
     /**
@@ -18,6 +21,7 @@ public class JokerJFrame extends javax.swing.JFrame {
      */
     public JokerJFrame() {
         initComponents();
+        setExtendedState(java.awt.Frame.MAXIMIZED_VERT);
     }
 
     /**
