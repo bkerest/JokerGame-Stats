@@ -38,7 +38,7 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
         jLabel5.setText(year);
         
         String month = null;
-        int totalgames = 0;
+        int totaldraws = 0;
         double totalmoney = 0;
         String totalmoneySTR = null;
         
@@ -48,7 +48,7 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
         String[] DateStart = new String[12];
         String[] DateEnd = new String[12];
         String[] URL = new String[12];
-        String[] SumGames = new String[12];
+        String[] SumDraws = new String[12];
         String[] SumMoney = new String[12];
         String[] SumJackpot = new String[12];
                 
@@ -115,7 +115,7 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
                 System.out.println("*****************************");
                 
                 //Αρχικοποιώ τους καταμετρητές κάθε μήνα
-                int games = 0;
+                int draws = 0;
                 double money = 0;
                 int jackpot = 0;
 
@@ -143,11 +143,11 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
 
                     }
                     //Αυξάνω τα παιχνίδια που έγιναν
-                    games++;
-                    totalgames++;
+                    draws++;
+                    totaldraws++;
                     
                     //Ενημερώνω τα ArrayList για τον συγκεκριμένο μήνα
-                    SumGames[i] =  String.valueOf(games);
+                    SumDraws[i] =  String.valueOf(draws);
                     DecimalFormat df = new DecimalFormat("#,##0.00");
                     SumMoney[i] = String.valueOf(df.format(money)) + " EUR";
                     SumJackpot[i] = String.valueOf(jackpot);
@@ -169,12 +169,12 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
         //Ορίζω την επικεφαλίδα, εισάγουμε τους πίνακες numbers και times και ενημερώνω τον jTable1
         model1.setColumnIdentifiers(new String[]{"Ιανουάριος", "Φεβρουάριος", "Μάρτιος",
             "Απρίλιος", "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος", "Σεπτέμβριος", "Οκτώβριος", "Νοέμβριος", "Δεκέμβριος"});
-        model1.addRow(SumGames);
+        model1.addRow(SumDraws);
         model1.addRow(SumMoney);
         model1.addRow(SumJackpot);
         jTable1.setModel(model1);
         
-        jLabel9.setText(String.valueOf(totalgames));
+        jLabel9.setText(String.valueOf(totaldraws));
         jLabel10.setText(totalmoneySTR);
             
     }
@@ -246,7 +246,7 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel1.setText("Παιχνίδια:");
+        jLabel1.setText("Κληρώσεις");
         jLabel1.setPreferredSize(new java.awt.Dimension(50, 15));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -282,7 +282,7 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel7.setText("Σύνολο Παιχνιδιών Έτους:");
+        jLabel7.setText("Σύνολο Κληρώσεων Έτους:");
         jLabel7.setPreferredSize(new java.awt.Dimension(50, 15));
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -337,7 +337,7 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)

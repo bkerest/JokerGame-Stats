@@ -10,8 +10,27 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileOutputStream;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.ColumnText;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfPCell;
+import java.awt.Desktop;
+import java.io.File;
+//import static joker.JokerJFrame2_2.date;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
@@ -403,7 +422,124 @@ public class JokerJFrame5 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+       //Εκτύπωση του πίνακα σε αρχείο PDF
+       
+        //Ελέγχω εάν ο χρήστης πάτησε το κουμπί Προβολή στατιστικών
+        if (jTable1.getValueAt(1, 0)!=null) {
+
+            try {
+                // Δημιουργώ ένα αντικείμενο doc μεγέθους Α3 για να χωρέσουν όλοι οι αριθμοί
+                Document doc = new Document(PageSize.A3.rotate());
+
+                //Το όνομα του αρχείου που θα δημιουργήσω
+                PdfWriter.getInstance(doc, new FileOutputStream("joker.pdf"));
+
+                //Ανοίγω το Document
+                doc.open();
+
+                //Δημιουργώ ένα PdfPTable για τους αριθμούς
+                PdfPTable pdfTable = new PdfPTable(jTable1.getColumnCount());
+                //Ορίζω το πλάτος του 100% για να χωρέσουν όλοι οι αριθμοί
+                pdfTable.setWidthPercentage(100);
+
+                //Ορισμός ελληνικών χαρακτήρων
+                BaseFont arialGreek = BaseFont.createFont("C:\\Windows\\Fonts\\arial.ttf", "CP1253", BaseFont.EMBEDDED);
+                Font arial = new Font(arialGreek, 14, Font.BOLD);
+                Font arial18 = new Font(arialGreek, 18, Font.BOLD);
+
+                //Επικεφαλίδα πίνακα αριθμών
+                PdfPCell cell = new PdfPCell(new Paragraph("Στατιστικά των αριθμών που έχουν κληρωθεί", arial));
+                cell.setColspan(46); // colspan 
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cell.setBackgroundColor(BaseColor.LIGHT_GRAY);//Χρώμα Background
+                pdfTable.addCell(cell);//προσθέτω το κελί στον pdfTable
+
+                //Πέρνω τους αριθμούς από το jTable1 και τους προσθέτω στο pdfTable
+                for (int i = 0; i < jTable1.getColumnCount(); i++) {
+                    PdfPCell cell1 = new PdfPCell(new Paragraph(jTable1.getColumnName(i)));
+                    cell1.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                    pdfTable.addCell(cell1);
+                }
+
+                //Πέρνω τα στατιστικά των αριθμών από το jTable1 και τους προσθέτω στο pdfTable
+                for (int rows = 0; rows < jTable1.getRowCount(); rows++) {
+                    for (int cols = 0; cols < jTable1.getColumnCount(); cols++) {
+                        pdfTable.addCell(jTable1.getModel().getValueAt(rows, cols).toString());
+                    }
+                }
+
+                //Δημιουργώ ένα PdfPTable για τους αριθμούς ΤΖΟΚΕΡ
+                PdfPTable pdfTable2 = new PdfPTable(jTable2.getColumnCount());
+                PdfPCell cell2 = new PdfPCell(new Paragraph("Στατιστικά των αριθμών ΤΖΟΚΕΡ που έχουν κληρωθεί", arial));
+                cell2.setColspan(21); // colspan 
+                cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cell2.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                pdfTable2.addCell(cell2);
+
+                //Πέρνω τους αριθμούς ΤΖΟΚΕΡ από το jTable2 και τους προσθέτω στο pdfTable2
+                for (int i = 0; i < jTable2.getColumnCount(); i++) {
+                    PdfPCell cell1 = new PdfPCell(new Paragraph(jTable2.getColumnName(i)));
+                    cell1.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                    pdfTable2.addCell(cell1);
+                }
+
+                //Πέρνω τα στατιστικά των αριθμών ΤΖΟΚΕΡ από το jTable2 και τους προσθέτω στο pdfTable
+                for (int rows = 0; rows < jTable2.getRowCount(); rows++) {
+                    for (int cols = 0; cols < jTable2.getColumnCount(); cols++) {
+                        pdfTable2.addCell(jTable2.getModel().getValueAt(rows, cols).toString());
+
+                    }
+                }
+
+                //Προσθέτω στο PDF έγγραφο την πληροφορία και κλείνω το αρχείο
+                
+                Image jimage = Image.getInstance("https://kerestetzis.xyz/eap_images/tzoker.png");
+                jimage.setAbsolutePosition(500,750);
+                jimage.scalePercent(100,100);
+                doc.add(jimage);
+                
+                Image eapimage = Image.getInstance("https://kerestetzis.xyz/eap_images/EAP.png");
+                eapimage.setAbsolutePosition(50,50);
+                eapimage.scalePercent(100,100);
+                doc.add(eapimage);
+
+                Image opapimage = Image.getInstance("https://kerestetzis.xyz/eap_images/Logo.png");
+                opapimage.setAbsolutePosition(900,50);
+                opapimage.scalePercent(100,100);
+                doc.add(opapimage);
+
+
+                Paragraph header = new Paragraph("Προβολή στατιστικών δεδομένων ΤΖΟΚΕΡ", arial18);
+                header.setAlignment(Element.ALIGN_CENTER);
+                header.setSpacingBefore(70);
+                
+                Phrase phrase1 = new Phrase("Στήλη 1: Αριθμοί"
+                                +"\n"+ "Στήλη 2: Κληρώσεις" + "\n"+
+                                "Στήλη 3: Kαθυστερήσεις", arial);
+                
+                doc.add(header);                    
+                doc.add(Chunk.NEWLINE);
+                doc.add(pdfTable);
+                doc.add(new Paragraph(""));
+                doc.add(Chunk.NEWLINE);
+                doc.add(pdfTable2);
+                doc.add(Chunk.NEWLINE);
+                doc.add(phrase1);
+                doc.close();
+
+                //Ανοίγω το αρχείο ώστε να το δεί ο χρήστης
+                File myFile = new File("joker.pdf");
+                Desktop.getDesktop().open(myFile);
+
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+        }
+        else{
+            // Ενημερωτικό μύνημα
+            JOptionPane.showMessageDialog(null, "Παρακαλώ πατήστε το κουμπί Προβολή στατιστικών ", "Ενημέρωση", JOptionPane.INFORMATION_MESSAGE);
+        }
+    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
