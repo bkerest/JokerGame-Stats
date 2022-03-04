@@ -194,6 +194,7 @@ public class JokerJFrame2 extends javax.swing.JFrame {
         // Μεταφερόμαστε στη σελίδα "Διαχείριση δεδομένων ΤΖΟΚΕΡ"
         JokerJFrame6 jokerJFrame6 = new JokerJFrame6();
         jokerJFrame6.setVisible(true);
+        //Κλεισιμο παράθυρου
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -201,12 +202,15 @@ public class JokerJFrame2 extends javax.swing.JFrame {
         // Μεταφερόμαστε στη σελίδα "Προβολή δεδομένων ΤΖΟΚΕΡ ανά μήνα για συγκεκριμένο έτος"
         JokerJFrame4 jokerJFrame4 = new JokerJFrame4();
         jokerJFrame4.setVisible(true);
+        //Κλεισιμο παράθυρου
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Μεταφερόμαστε στη σελίδα "Προβολή στατιστικών δεδομένων ΤΖΟΚΕΡ και εκτύπωση σε αρχείο pdf"
         JokerJFrame5 jokerJFrame5 = new JokerJFrame5();
         jokerJFrame5.setVisible(true);
+        //Κλεισιμο παράθυρου
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -214,6 +218,7 @@ public class JokerJFrame2 extends javax.swing.JFrame {
         // Επιστροφή στην αρχική σελιδα
         JokerJFrame jokerJFrame = new JokerJFrame();
         jokerJFrame.setVisible(true);
+        //Κλεισιμο παράθυρου
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 

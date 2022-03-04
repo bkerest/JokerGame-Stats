@@ -136,6 +136,8 @@ public class JokerJFrame4 extends javax.swing.JFrame {
         // Μεταφερομαστε στη σελίδα των αποτελεσμάτων
         JokerJFrame4_2 jokerJFrame4_2 = new JokerJFrame4_2(jTextField1.getText());
         jokerJFrame4_2.setVisible(true);
+        //Κλεισιμο παράθυρου
+        dispose();
 
     }//GEN-LAST:event_jButton3ActionPerformed
 

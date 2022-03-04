@@ -246,6 +246,7 @@ public class JokerJFrame extends javax.swing.JFrame {
         // Μεταφερόμαστε στη σελίδα "Διαχείριση δεδομένων ΤΖΟΚΕΡ"
         JFrameAbout jFrameAbout = new JFrameAbout();
         jFrameAbout.setVisible(true);
+        //Κλεισιμο παράθυρου
         dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
