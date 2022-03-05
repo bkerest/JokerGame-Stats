@@ -36,6 +36,7 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
     public JokerJFrame4_2(String year) {
         initComponents();
         setResizable(false);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         
         jLabel5.setText(year);

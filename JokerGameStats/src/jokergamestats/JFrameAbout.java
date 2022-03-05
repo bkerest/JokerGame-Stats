@@ -5,6 +5,8 @@
  */
 package jokergamestats;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author vkere
@@ -15,7 +17,10 @@ public class JFrameAbout extends javax.swing.JFrame {
      * Creates new form JFrameAbout
      */
     public JFrameAbout() {
-        initComponents();
+        initComponents();        
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
     /**

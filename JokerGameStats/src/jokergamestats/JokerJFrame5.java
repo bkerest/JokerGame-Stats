@@ -44,7 +44,8 @@ public class JokerJFrame5 extends javax.swing.JFrame {
      */
     public JokerJFrame5() {
         initComponents();
-        setResizable(false);
+        setResizable(false);        
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
