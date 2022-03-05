@@ -1,24 +1,7 @@
-Wed Feb 23 22:58:02 EET 2022 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
+Sat Mar 05 20:21:23 EET 2022 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Wed Feb 23 22:59:09 EET 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-017f-2860-6d61-00004c7f6967 
-on database directory C:\Users\gkiop\Desktop\пкг24 (3)\еяцасиес\Git\JokerGameStats\JokerGameStats\db\jokergame with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
-Loaded from file:/C:/Program%20Files/glassfish-4.1.1/javadb/lib/derby.jar
-java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_201-b09
-user.dir=C:\Program Files\glassfish-4.1.1\javadb
-os.name=Windows 10
-os.arch=amd64
-os.version=10.0
-derby.system.home=C:\Users\gkiop\Desktop\пкг24 (3)\еяцасиес\Git\JokerGameStats\JokerGameStats\db
-Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Wed Feb 23 22:59:25 EET 2022:
-Shutting down instance a816c00e-017f-2860-6d61-00004c7f6967 on database directory C:\Users\gkiop\Desktop\пкг24 (3)\еяцасиес\Git\JokerGameStats\JokerGameStats\db\jokergame with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
-Wed Feb 23 22:59:26 EET 2022 Thread[DRDAConnThread_2,5,main] (DATABASE = jokergame), (DRDAID = {2}), Database 'jokergame' shutdown.
-----------------------------------------------------------------
-Wed Feb 23 22:59:36 EET 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance 560740aa-017f-2860-6d61-00004c7f6967 
+Sat Mar 05 20:21:24 EET 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-017f-5b50-9587-00004c7f6967 
 on database directory C:\Users\gkiop\Desktop\пкг24 (3)\еяцасиес\Git\JokerGameStats\JokerGameStats\db\jokergame with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
 Loaded from file:/C:/Program%20Files/glassfish-4.1.1/javadb/lib/derby.jar
 java.vendor=Oracle Corporation

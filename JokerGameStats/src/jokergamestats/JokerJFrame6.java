@@ -13,14 +13,16 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -29,12 +31,12 @@ import javax.persistence.Query;
  */
 public class JokerJFrame6 extends javax.swing.JFrame {
     
-    //Entity Manager και Controllers
+ //Entity Manager & Controllers
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("JokerGameStatsPU");
     EntityManager em = emf.createEntityManager();
     EntityTransaction tx = em.getTransaction();
-    DrawsJpaController djc = new DrawsJpaController (emf);
-    PrizecategoriesJpaController pjc = new PrizecategoriesJpaController (emf);
+    DrawsJpaController gjc = new DrawsJpaController(emf);
+    PrizecategoriesJpaController pjc = new PrizecategoriesJpaController(emf);   
 
     /**
      * Creates new form JokerJFrame6
@@ -76,7 +78,6 @@ public class JokerJFrame6 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
-        setPreferredSize(new java.awt.Dimension(984, 600));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -98,10 +99,24 @@ public class JokerJFrame6 extends javax.swing.JFrame {
         });
 
         jButton2.setText("ΑΠΟΘΗΚΕΥΣΗ ΔΕΔΟΜΕΝΩΝ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("ΕΥΡΕΣΗ ΚΛΗΡΩΣΕΩΝ");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -205,65 +220,61 @@ public class JokerJFrame6 extends javax.swing.JFrame {
                 .addGap(77, 77, 77)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(136, 136, 136)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(345, 345, 345)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addGap(75, 75, 75))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButton2)
-                                            .addComponent(jButton1))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(jLabel7)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING))
-                                        .addGap(35, 35, 35)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(jLabel6)
-                                                .addGap(36, 36, 36)))))
-                                .addGap(25, 25, 25))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton2)
+                                    .addComponent(jButton1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 491, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(242, 242, 242)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 263, Short.MAX_VALUE)))))
-                .addContainerGap(25, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addGap(58, 58, 58)
-                .addComponent(jLabel5)
-                .addGap(92, 92, 92))
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jButton3)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton5)
+                                .addGap(71, 71, 71)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(76, 76, 76)
+                                .addComponent(jLabel5)
+                                .addGap(70, 70, 70))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(242, 242, 242)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(362, 362, 362)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(370, 370, 370)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(387, 387, 387)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(136, 136, 136)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,9 +282,9 @@ public class JokerJFrame6 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2))
@@ -281,14 +292,11 @@ public class JokerJFrame6 extends javax.swing.JFrame {
                                 .addComponent(jButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton2))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel6)
-                                .addGap(4, 4, 4))))
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(23, 23, 23))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(91, 91, 91)
                         .addComponent(jButton5)
@@ -298,23 +306,28 @@ public class JokerJFrame6 extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(45, 45, 45)
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(295, 295, 295))
         );
 
@@ -337,39 +350,200 @@ public class JokerJFrame6 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        //Καλούμε το κατάλληλο url
+       //Παίρνω το drawId και καλώ το κατάλληλο url
         String select = jTextField1.getText();
-        String urlToCall = "https:api.opap.gr/draws/v3.0/5104/" + select;
-        System.out.println(urlToCall);
+        String urlToCall = "https://api.opap.gr/draws/v3.0/5104/" + select;
         
-        //Φτιαχνουμε αντικείμενο OkHttpClient
+
+        //Δημιουργώ  αντικείμενο OkHttpClient 
         OkHttpClient client = new OkHttpClient();
-        //Φτιάχνουμε αντικείμενο Request με όρισμα το url που καλούμε
+        //Δημιουργούμε  αντικείμενο Request στο οποίο ορίζω το url που θα καλέσω 
         Request request = new Request.Builder().url(urlToCall).build();
-        
-        //Καλούμε το url και ελέγχουμε εαν φέρνει αποτέλεσμα
+
+        //Προσπαθώ να ζητήσω το url και ελέγχω εάν παίρνω αποτελέσματα
         try (okhttp3.Response response = client.newCall(request).execute()) {
             if (response.isSuccessful() && response.body() != null) {
-                
-                //Καταχωρούμε το αποτέλεσμα σε ένα string
+
+                //Καταχωρώ σε  String το αποτέλεσμα
                 String responseString = response.body().string();
-                
-                //Φτιάχνουμε GsonBuilder
+
+                //Δημιουργώ αντικείμενο GsonBuilder
                 GsonBuilder builder = new GsonBuilder();
                 builder.setPrettyPrinting();
                 Gson gson = builder.create();
-                
-                //Δημιουργούμε ένα JsonArray και περνάμε τα αποτελέσματα
-                //από το JsonObject
+
+                //Βάζω τα αποτελέσματα σε JsonObject και φτιάχνω ένα JsonArray
                 JsonObject json = gson.fromJson(responseString, JsonObject.class);
                 System.out.println(json);
-                
-                
+
+                JsonObject winningNumbers = json.getAsJsonObject("winningNumbers");
+                System.out.println(winningNumbers);
+                JsonArray numbers = winningNumbers.get("list").getAsJsonArray();
+                JsonArray joker = winningNumbers.get("bonus").getAsJsonArray();
+                System.out.println(numbers);
+                System.out.println(joker);
+
+                //Δημιουργώ 2 models για τους πίνακες
+                DefaultTableModel model = new DefaultTableModel();
+                DefaultTableModel model2 = new DefaultTableModel();
+
+                //Ορίζω τις επικεφαλίδες των πινάκων
+                model.setColumnIdentifiers(new String[]{"1oς", "2oς", "3oς", "4oς", "5oς", "Joker"});
+                model2.setColumnIdentifiers(new String[]{"Κατηγορίες επιτυχιών", "Επιτυχίες", "Κέρδη ανά επιτυχία"});
+
+                String[] n = new String[6];
+                for (int i = 0; i < numbers.size(); i++) {
+                    n[i] = numbers.get(i).getAsString();
+                }
+                n[5] = joker.getAsString();
+                model.addRow(n);
+
+                //Στοιχίζω τα δεδομένα των πίνακων στο κέντρο
+                DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+                centerRenderer.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+                jTable1.setDefaultRenderer(Object.class, centerRenderer);
+                jTable1.setModel(model);
+
+                //Φτιάχνω τον πίνακα "prizeCategories" 
+                JsonArray prizeCategories = json.get("prizeCategories").getAsJsonArray();
+                System.out.println(prizeCategories);
+                String[] p = new String[3];
+
+                //Διαπερνάω τα JsonElements
+                for (JsonElement element : prizeCategories) {
+                    switch (element.getAsJsonObject().get("id").getAsInt()) {
+                        case 1:
+                            p[0] = "5+1";
+                            break;
+                        case 2:
+                            p[0] = "5";
+                            break;
+                        case 3:
+                            p[0] = "4+1";
+                            break;
+                        case 4:
+                            p[0] = "4";
+                            break;
+                        case 5:
+                            p[0] = "3+1";
+                            break;
+                        case 6:
+                            p[0] = "3";
+                            break;
+                        case 7:
+                            p[0] = "2+1";
+                            break;
+                        case 8:
+                            p[0] = "1+1";
+                            break;
+                    }
+                    p[1] = element.getAsJsonObject().get("winners").getAsString();
+                    p[2] = element.getAsJsonObject().get("divident").getAsString();
+                    model2.addRow(p);
+                }
+
+                //Στοιχίζω τα δεδομένα των πίνακων στο κέντρο
+                DefaultTableCellRenderer centerRenderer2 = new DefaultTableCellRenderer();
+                centerRenderer.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+                jTable2.setDefaultRenderer(Object.class, centerRenderer);
+                jTable2.setModel(model2);
+
+                // Ειδοποίηση ότι εισήχθησαν τα δεδομένα
+                JOptionPane.showMessageDialog(this, "Τα δεδομένα για το gameId: " + select + " εισήχθησαν", "Ειδοποίηση", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                // Ειδοποίηση ότι δεν υπάρχουν δεδομένα
+                JOptionPane.showMessageDialog(this, "Δεν υπάρχουν δεδομένα για το gameId: " + select, "Ειδοποίηση", JOptionPane.INFORMATION_MESSAGE);
             }
-        } catch (IOException ex) {
-            Logger.getLogger(JokerJFrame6.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            // Ειδοποίηση ότι δεν υπάρχουν δεδομένα
+            JOptionPane.showMessageDialog(this, "Δεν υπάρχουν δεδομένα για το gameId: " + select, "Ειδοποίηση", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        //προβάλλονται οι κληρώσεις που έχουν γίνει εντός τους εύρους ημερομηνιών
+        try {
+            //Οι ημερομηνίες που επέλεξε ο χρήστης
+            Date date1 = jDateChooser1.getDate();
+            Date date2 = jDateChooser2.getDate();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat format2 = new SimpleDateFormat("dd-MM-yyyy");
+            String stringDate1 = format.format(date1);
+            String stringDate2 = format.format(date2);
+            System.out.println(stringDate1 + stringDate2);
+
+            //Καλώ το κατάλληλο url
+            String urlToCall = "https://api.opap.gr/draws/v3.0/5104/draw-date/" + stringDate1 + "/" + stringDate2 + "/draw-id";
+            System.out.println(urlToCall);
+
+            //Δημιουργώ αντικείμενο OkHttpClient 
+            OkHttpClient client = new OkHttpClient();
+            //Δημιουργούμε ένα αντικείμενο Request με όρισμα το url που θα καλέσουμε 
+            Request request = new Request.Builder().url(urlToCall).build();
+
+            //Ξεκινάμε και ζητάμε το url και ελέγχουμε εάν μας φέρνει αποτελέσματα
+            try (okhttp3.Response response = client.newCall(request).execute()) {
+
+                if (response.isSuccessful() && response.body() != null) {
+
+                    //Καταχωρώ σε ένα String το αποτέλεσμα
+                    String responseString = response.body().string();
+
+                    //Δημιουργώ ένα αντικείμενο GsonBuilder
+                    GsonBuilder builder = new GsonBuilder();
+                    builder.setPrettyPrinting();
+                    Gson gson = builder.create();
+                    //Πέρνουμε τα αποτελέσματα σε JsonObject και δημιουργούμε ένα JsonArray
+                    JsonArray json = gson.fromJson(responseString, JsonArray.class);
+
+                    System.out.println(json);
+
+                    //Δημιουργώ ένα Model
+                    DefaultComboBoxModel model = new DefaultComboBoxModel();
+
+                    //Διαπερνάω τα δεδομένα id των κληρώσεων
+                    for (JsonElement jsonElement : json) {
+                        String data = jsonElement.getAsString();
+                        model.addElement(data);
+                    }
+
+                    //Προσθέτω τα drawid στο jComboBox1
+                    jComboBox1.setModel(model);
+
+                    // Ειδοποίηση ότι τα δεδομένα εισήχθησαν
+                    JOptionPane.showMessageDialog(this, "Τα δεδομένα για τα παιχνίδια από " + format2.format(date1)
+                            + " έως " + format2.format(date2) + " εισήχθησαν", "Ειδοποίηση", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    // Ειδοποίηση ότι δεν υπάρχουν διαθέσιμα δεδομένα
+                    JOptionPane.showMessageDialog(this, "Δεν υπάρχουν διοαθέσιμα δεδομένα από " + format2.format(date1)
+                            + " έως " + format2.format(date2), "Ειδοποίηση", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (Exception ex) {
+                // Ειδοποίηση ότι δεν υπάρχουν διαθέσιμα δεδομένα
+                JOptionPane.showMessageDialog(this, "Δεν υπάρχουν διοαθέσιμα δεδομένα από " + format2.format(date1)
+                        + " έως " + format2.format(date2), "Ειδοποίηση", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception ex) {
+            // Ειδοποίηση για επιλογή εύρους ημερομηνιών
+            JOptionPane.showMessageDialog(this, "Παρακαλώ επιλέξτε το εύρος των ημερομηνιών", "Ειδοποίηση", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        jTextField1.setText(jComboBox1.getSelectedItem().toString());
+        this.jButton1ActionPerformed(evt);
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int drawId = Integer.parseInt(jTextField1.getText());
+        System.out.println(drawId);
+
+        Query query = em.createNamedQuery("Draws.findByDrawid");
+        query.setParameter("drawid", drawId);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
