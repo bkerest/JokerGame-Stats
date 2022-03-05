@@ -25,11 +25,10 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.BaseFont;
-import com.itextpdf.text.pdf.ColumnText;
-import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import java.awt.Desktop;
 import java.io.File;
+import javax.swing.JFrame;
 //import static joker.JokerJFrame2_2.date;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -45,7 +44,8 @@ public class JokerJFrame5 extends javax.swing.JFrame {
      */
     public JokerJFrame5() {
         initComponents();
-    setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
     /**

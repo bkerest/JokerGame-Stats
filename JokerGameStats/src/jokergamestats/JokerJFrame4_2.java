@@ -11,6 +11,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import static java.lang.Integer.parseInt;
 import java.text.DecimalFormat;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import okhttp3.OkHttpClient;
@@ -34,7 +35,9 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
      */
     public JokerJFrame4_2(String year) {
         initComponents();
-        setExtendedState(java.awt.Frame.MAXIMIZED_VERT);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        
         jLabel5.setText(year);
         
         String month = null;

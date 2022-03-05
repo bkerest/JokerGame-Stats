@@ -5,6 +5,7 @@
  */
 package jokergamestats;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 
@@ -22,7 +23,8 @@ public class JokerJFrame2 extends javax.swing.JFrame {
      */
     public JokerJFrame2() {
         initComponents();
-        setExtendedState(java.awt.Frame.MAXIMIZED_VERT);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
     /**

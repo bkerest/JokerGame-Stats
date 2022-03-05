@@ -21,7 +21,8 @@ public class JokerJFrame extends javax.swing.JFrame {
      */
     public JokerJFrame() {
         initComponents();
-        setExtendedState(java.awt.Frame.MAXIMIZED_VERT);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
     /**

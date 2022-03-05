@@ -219,3 +219,6 @@ ERROR XJ004: Database 'opap' not found.
 ============= end nested exception, level (1) ===========
 Cleanup action completed
 Fri Mar 04 20:06:30 EET 2022 Thread[DRDAConnThread_2,5,main] (DATABASE = opap), (DRDAID = {4}), Database 'opap' not found.
+----------------------------------------------------------------
+Sat Mar 05 01:22:20 EET 2022: Shutting down Derby engine
+----------------------------------------------------------------
