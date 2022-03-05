@@ -240,7 +240,7 @@ public class JokerJFrame5 extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("Στήλη 1: Αριθμοί\nΣτήλη 2: Πλήθος Εμφανίσεων\nΣτήλη 3: Καθυστέριση Εμφάνισης");
+        jTextArea1.setText("Γραμμή 1: Αριθμοί\nΓραμμή 2: Πλήθος Εμφανίσεων\nΓραμμή 3: Καθυστέριση Εμφάνισης");
         jTextArea1.setBorder(null);
         jScrollPane3.setViewportView(jTextArea1);
 
@@ -513,9 +513,9 @@ public class JokerJFrame5 extends javax.swing.JFrame {
                 header.setAlignment(Element.ALIGN_CENTER);
                 header.setSpacingBefore(70);
                 
-                Phrase phrase1 = new Phrase("Στήλη 1: Αριθμοί"
-                                +"\n"+ "Στήλη 2: Κληρώσεις" + "\n"+
-                                "Στήλη 3: Kαθυστερήσεις", arial);
+                Phrase phrase1 = new Phrase("Γραμμή 1: Αριθμοί"
+                                +"\n"+ "Γραμμή 2: Κληρώσεις" + "\n"+
+                                "Γραμμή 3: Kαθυστερήσεις", arial);
                 
                 doc.add(header);                    
                 doc.add(Chunk.NEWLINE);
