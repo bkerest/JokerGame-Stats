@@ -5,6 +5,7 @@
  */
 package jokergamestats;
 
+import Tools.DbConnectHelper;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -27,6 +28,8 @@ public class JokerMainScreen extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
+    
+    private DbConnectHelper dbsInit = new DbConnectHelper() ; 
 
     /**
      * This method is called from within the constructor to initialize the form.
