@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
+import org.apache.derby.drda.NetworkServerControl;
 
 /**
  * @author Vasilis Kerestetzis
@@ -24,7 +25,7 @@ public final class DbConnectHelper
     
     //DRIVER Ο ΟΠΟΙΟΣ ΘΑ ΧΡΗΣΙΜΟΠΟΙΗΘΕΙ ΓΙΑ ΟΛΕΣ ΤΙΣ ΔΑΙΔΙΚΑΣΙΕΣ ΠΟΥ ΘΑ 
     //ΓΙΝΟΥΝ ΣΤΗ ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ
-    private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
+    private static final String JDBC_DRIVER = "org.apache.derby.jdbc.ClientDriver";  
     private static final String DB_URL = "jdbc:derby://localhost:1527/jokergame;create=true";
 
     //ΔΙΑΠΙΣΤΕΥΤΗΡΙΑ ΒΑΣΗΣ ΔΕΔΟΜΕΝΩΝ
@@ -33,7 +34,11 @@ public final class DbConnectHelper
 
     
     
-    public DbConnectHelper() {
+    public DbConnectHelper() throws Exception {
+        
+        NetworkServerControl server = new NetworkServerControl();
+        server.start (null);
+        
         try {
             //Register JDBC driver
             Class.forName("org.apache.derby.jdbc.ClientDriver");
@@ -47,8 +52,7 @@ public final class DbConnectHelper
     //ΔΑΙΔΙΚΑΣΙΑ ΣΥΝΔΕΣΗΣ ΜΕ ΤΗΝ ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ 
     public static void connect()
     {
-        //if (emf == null)
-        //{
+
             try 
             {
                 //ΔΗΜΙΟΥΡΓΙΑ ΤΟΥ Entity Manager ΓΙΑ ΤΗ ΣΥΝΔΕΣΗ ΤΗΣ ΕΦΑΡΜΟΓΗΣ ΜΕ ΤΗΝ ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ.
@@ -61,7 +65,7 @@ public final class DbConnectHelper
                 //ΜΗΝΥΜΑ ΣΦΑΛΜΑΤΟΣ ΣΥΝΔΕΣΗΣ ΜΕ ΤΗΝ ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ
                 JOptionPane.showMessageDialog(null, "Αποτυχία σύνδεσης με τη Βάση Δεδομένων. Έλέγξτε αν ο Server της JavaDB είναι φορτωμένος.", "Σφάλμα", JOptionPane.ERROR_MESSAGE);
             }
-        //}
+
     }
 
     /*Getters-Setters*/
