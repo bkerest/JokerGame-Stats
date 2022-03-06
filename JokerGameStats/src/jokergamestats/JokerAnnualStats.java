@@ -25,15 +25,15 @@ import okhttp3.Request;
  * @author Giannis Sykaras
  */
 
-public class JokerJFrame4_2 extends javax.swing.JFrame {
+public class JokerAnnualStats extends javax.swing.JFrame {
     static String year = null;
 
     
     /**
-     * Creates new form JokerJFrame4_2
+     * Creates new form JokerAnnualStats
      * @param year
      */
-    public JokerJFrame4_2(String year) {
+    public JokerAnnualStats(String year) {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
@@ -395,16 +395,16 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // Μεταφερομαστε στην αρχικη σελιδα του JOKER
-        JokerJFrame2 jokerJFrame2 = new JokerJFrame2();
-        jokerJFrame2.setVisible(true);
+        JokerMainScreen jokerMainScreen = new JokerMainScreen();
+        jokerMainScreen.setVisible(true);
         //Κλεισιμο παράθυρου
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // Μεταφερομαστε στην αρχικη σελιδα Επιλογής έτους
-        JokerJFrame4 jokerJFrame4 = new JokerJFrame4();
-        jokerJFrame4.setVisible(true);
+        JokerSelectYear jokerSelectYear = new JokerSelectYear();
+        jokerSelectYear.setVisible(true);
         //Κλεισιμο παράθυρου
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -426,19 +426,19 @@ public class JokerJFrame4_2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JokerJFrame4_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JokerAnnualStats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JokerJFrame4_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JokerAnnualStats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JokerJFrame4_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JokerAnnualStats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JokerJFrame4_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JokerAnnualStats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new JokerJFrame4_2(year).setVisible(true);
+            new JokerAnnualStats(year).setVisible(true);
         });
     }
 

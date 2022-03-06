@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package jokergamestats;
 
 import java.io.Serializable;
@@ -21,57 +20,63 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
- * @author vker
+ * @author Vasilis Kerestetzis
+ * @author Giorgos Kiopektzis
+ * @author Fani Kontou
+ * @author Giannis Sykaras
  */
+
 @Entity
-@Table(name = "PRIZECATEGORIES")
+@Table(catalog = "", schema = "JOKER")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Prizecategories.findAll", query = "SELECT p FROM Prizecategories p")
     , @NamedQuery(name = "Prizecategories.findByPid", query = "SELECT p FROM Prizecategories p WHERE p.pid = :pid")
     , @NamedQuery(name = "Prizecategories.findByCategoryid", query = "SELECT p FROM Prizecategories p WHERE p.categoryid = :categoryid")
-    , @NamedQuery(name = "Prizecategories.findByDivident", query = "SELECT p FROM Prizecategories p WHERE p.divident = :divident")
+    , @NamedQuery(name = "Prizecategories.findByDivedent", query = "SELECT p FROM Prizecategories p WHERE p.divedent = :divedent")
     , @NamedQuery(name = "Prizecategories.findByWinners", query = "SELECT p FROM Prizecategories p WHERE p.winners = :winners")
-    , @NamedQuery(name = "Prizecategories.findByDistribut", query = "SELECT p FROM Prizecategories p WHERE p.distribut = :distribut")
-    , @NamedQuery(name = "Prizecategories.findByJackpot", query = "SELECT p FROM Prizecategories p WHERE p.jackpot = :jackpot")
-    , @NamedQuery(name = "Prizecategories.findByFixed", query = "SELECT p FROM Prizecategories p WHERE p.fixed = :fixed")
-    , @NamedQuery(name = "Prizecategories.findByCategorytype", query = "SELECT p FROM Prizecategories p WHERE p.categorytype = :categorytype")
-    , @NamedQuery(name = "Prizecategories.findByGametype", query = "SELECT p FROM Prizecategories p WHERE p.gametype = :gametype")})
+    , @NamedQuery(name = "Prizecategories.deleteByDrawID", query = "DELETE FROM Prizecategories p WHERE p.drawidFk = :drawidFk")})
+
 public class Prizecategories implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "PID")
+    @Column(nullable = false)
     private Integer pid;
-    @Column(name = "CATEGORYID")
-    private Integer categoryid;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "DIVIDENT")
-    private Double divident;
-    @Column(name = "WINNERS")
-    private Integer winners;
-    @Column(name = "DISTRIBUT")
-    private Double distribut;
-    @Column(name = "JACKPOT")
-    private Double jackpot;
-    @Column(name = "FIXED")
-    private Double fixed;
-    @Column(name = "CATEGORYTYPE")
-    private Integer categorytype;
-    @Column(name = "GAMETYPE")
-    private String gametype;
-    @JoinColumn(name = "DRAWID", referencedColumnName = "DRAWID")
-    @ManyToOne
-    private Draws drawid;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private int categoryid;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private float divedent;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private int winners;
+    @JoinColumn(name = "DRAWID_FK", referencedColumnName = "DRAWID", nullable = false)
+    @ManyToOne(optional = false)
+    private Draws drawidFk;
 
     public Prizecategories() {
     }
 
     public Prizecategories(Integer pid) {
         this.pid = pid;
+    }
+
+    public Prizecategories(Integer pid, int categoryid, float divedent, int winners) {
+        this.pid = pid;
+        this.categoryid = categoryid;
+        this.divedent = divedent;
+        this.winners = winners;
+    }
+    
+        public Prizecategories(int categoryid, float divedent, int winners, Draws drawId) {
+        this.categoryid = categoryid;
+        this.divedent = divedent;
+        this.winners = winners;
+        this.drawidFk = drawId;
     }
 
     public Integer getPid() {
@@ -82,76 +87,36 @@ public class Prizecategories implements Serializable {
         this.pid = pid;
     }
 
-    public Integer getCategoryid() {
+    public int getCategoryid() {
         return categoryid;
     }
 
-    public void setCategoryid(Integer categoryid) {
+    public void setCategoryid(int categoryid) {
         this.categoryid = categoryid;
     }
 
-    public Double getDivident() {
-        return divident;
+    public float getDivedent() {
+        return divedent;
     }
 
-    public void setDivident(Double divident) {
-        this.divident = divident;
+    public void setDivedent(float divedent) {
+        this.divedent = divedent;
     }
 
-    public Integer getWinners() {
+    public int getWinners() {
         return winners;
     }
 
-    public void setWinners(Integer winners) {
+    public void setWinners(int winners) {
         this.winners = winners;
     }
 
-    public Double getDistribut() {
-        return distribut;
+    public Draws getDrawidFk() {
+        return drawidFk;
     }
 
-    public void setDistribut(Double distribut) {
-        this.distribut = distribut;
-    }
-
-    public Double getJackpot() {
-        return jackpot;
-    }
-
-    public void setJackpot(Double jackpot) {
-        this.jackpot = jackpot;
-    }
-
-    public Double getFixed() {
-        return fixed;
-    }
-
-    public void setFixed(Double fixed) {
-        this.fixed = fixed;
-    }
-
-    public Integer getCategorytype() {
-        return categorytype;
-    }
-
-    public void setCategorytype(Integer categorytype) {
-        this.categorytype = categorytype;
-    }
-
-    public String getGametype() {
-        return gametype;
-    }
-
-    public void setGametype(String gametype) {
-        this.gametype = gametype;
-    }
-
-    public Draws getDrawid() {
-        return drawid;
-    }
-
-    public void setDrawid(Draws drawid) {
-        this.drawid = drawid;
+    public void setDrawidFk(Draws drawidFk) {
+        this.drawidFk = drawidFk;
     }
 
     @Override
@@ -176,7 +141,7 @@ public class Prizecategories implements Serializable {
 
     @Override
     public String toString() {
-        return "Database.Prizecategories[ pid=" + pid + " ]";
+        return "jokergamestats.Prizecategories[ pid=" + pid + " ]";
     }
     
 }

@@ -14,12 +14,12 @@ import java.awt.*;
  * @author Giannis Sykaras
  */
 
-public class JokerJFrame extends javax.swing.JFrame {
+public class StartScreen extends javax.swing.JFrame {
 
     /**
-     * Creates new form JokerJFrame_1
+     * Creates new form StartScreen_1
      */
-    public JokerJFrame() {
+    public StartScreen() {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
@@ -242,16 +242,16 @@ public class JokerJFrame extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // Μεταφερομαστε στην αρχικη σελιδα του JOKER
-        JokerJFrame2 jokerJFrame2 = new JokerJFrame2();
-        jokerJFrame2.setVisible(true);  
+        JokerMainScreen jokerMainScreen = new JokerMainScreen();
+        jokerMainScreen.setVisible(true);  
         //Κλεισιμο παράθυρου
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // Μεταφερόμαστε στη σελίδα "Διαχείριση δεδομένων ΤΖΟΚΕΡ"
-        JFrameAbout jFrameAbout = new JFrameAbout();
-        jFrameAbout.setVisible(true);
+        AboutScreen aboutScreen = new AboutScreen();
+        aboutScreen.setVisible(true);
         //Κλεισιμο παράθυρου
         dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -273,7 +273,7 @@ public class JokerJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JokerJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         
@@ -281,7 +281,7 @@ public class JokerJFrame extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new JokerJFrame().setVisible(true);
+            new StartScreen().setVisible(true);
         });
     }
 

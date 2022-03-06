@@ -6,18 +6,22 @@
 package jokergamestats;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
+import jokergamestats.exceptions.NonexistentEntityException;
 
 /**
- *
- * @author vker
+ * @author Vasilis Kerestetzis
+ * @author Giorgos Kiopektzis
+ * @author Fani Kontou
+ * @author Giannis Sykaras
  */
+
 public class PrizecategoriesJpaController implements Serializable {
 
     public PrizecategoriesJpaController(EntityManagerFactory emf) {
@@ -34,15 +38,15 @@ public class PrizecategoriesJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Draws drawid = prizecategories.getDrawid();
-            if (drawid != null) {
-                drawid = em.getReference(drawid.getClass(), drawid.getDrawid());
-                prizecategories.setDrawid(drawid);
+            Draws drawidFk = prizecategories.getDrawidFk();
+            if (drawidFk != null) {
+                drawidFk = em.getReference(drawidFk.getClass(), drawidFk.getDrawid());
+                prizecategories.setDrawidFk(drawidFk);
             }
             em.persist(prizecategories);
-            if (drawid != null) {
-                drawid.getPrizecategoriesList().add(prizecategories);
-                drawid = em.merge(drawid);
+            if (drawidFk != null) {
+                drawidFk.getPrizecategoriesCollection().add(prizecategories);
+                drawidFk = em.merge(drawidFk);
             }
             em.getTransaction().commit();
         } finally {
@@ -58,20 +62,20 @@ public class PrizecategoriesJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Prizecategories persistentPrizecategories = em.find(Prizecategories.class, prizecategories.getPid());
-            Draws drawidOld = persistentPrizecategories.getDrawid();
-            Draws drawidNew = prizecategories.getDrawid();
-            if (drawidNew != null) {
-                drawidNew = em.getReference(drawidNew.getClass(), drawidNew.getDrawid());
-                prizecategories.setDrawid(drawidNew);
+            Draws drawidFkOld = persistentPrizecategories.getDrawidFk();
+            Draws drawidFkNew = prizecategories.getDrawidFk();
+            if (drawidFkNew != null) {
+                drawidFkNew = em.getReference(drawidFkNew.getClass(), drawidFkNew.getDrawid());
+                prizecategories.setDrawidFk(drawidFkNew);
             }
             prizecategories = em.merge(prizecategories);
-            if (drawidOld != null && !drawidOld.equals(drawidNew)) {
-                drawidOld.getPrizecategoriesList().remove(prizecategories);
-                drawidOld = em.merge(drawidOld);
+            if (drawidFkOld != null && !drawidFkOld.equals(drawidFkNew)) {
+                drawidFkOld.getPrizecategoriesCollection().remove(prizecategories);
+                drawidFkOld = em.merge(drawidFkOld);
             }
-            if (drawidNew != null && !drawidNew.equals(drawidOld)) {
-                drawidNew.getPrizecategoriesList().add(prizecategories);
-                drawidNew = em.merge(drawidNew);
+            if (drawidFkNew != null && !drawidFkNew.equals(drawidFkOld)) {
+                drawidFkNew.getPrizecategoriesCollection().add(prizecategories);
+                drawidFkNew = em.merge(drawidFkNew);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -102,10 +106,10 @@ public class PrizecategoriesJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The prizecategories with id " + id + " no longer exists.", enfe);
             }
-            Draws drawid = prizecategories.getDrawid();
-            if (drawid != null) {
-                drawid.getPrizecategoriesList().remove(prizecategories);
-                drawid = em.merge(drawid);
+            Draws drawidFk = prizecategories.getDrawidFk();
+            if (drawidFk != null) {
+                drawidFk.getPrizecategoriesCollection().remove(prizecategories);
+                drawidFk = em.merge(drawidFk);
             }
             em.remove(prizecategories);
             em.getTransaction().commit();

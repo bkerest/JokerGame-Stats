@@ -14,12 +14,12 @@ import javax.swing.JOptionPane;
  * @author Fani Kontou
  * @author Giannis Sykaras
  */
-public class JokerJFrame4 extends javax.swing.JFrame {
+public class JokerSelectYear extends javax.swing.JFrame {
 
     /**
-     * Creates new form JokerJFrame4
+     * Creates new form JokerSelectYear
      */
-    public JokerJFrame4() {
+    public JokerSelectYear() {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
@@ -45,7 +45,7 @@ public class JokerJFrame4 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(984, 600));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ΠΡΟΒΟΛΗ ΔΕΔΟΜΕΝΩΝ ΤΖΟΚΕΡ ΑΝΑ ΜΗΝΑ ΓΙΑ ΣΥΓΚΕΚΡΙΜΕΝΟ ΕΤΟΣ");
 
@@ -127,16 +127,16 @@ public class JokerJFrame4 extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // Μεταφερομαστε στην αρχικη σελιδα του JOKER
-        JokerJFrame2 jokerJFrame2 = new JokerJFrame2();
-        jokerJFrame2.setVisible(true);  
+        JokerMainScreen jokerMainScreen = new JokerMainScreen();
+        jokerMainScreen.setVisible(true);  
         //Κλεισιμο παράθυρου
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Μεταφερομαστε στη σελίδα των αποτελεσμάτων
-            JokerJFrame4_2 jokerJFrame4_2 = new JokerJFrame4_2(String.valueOf(jTextField1.getText()));
-            jokerJFrame4_2.setVisible(true);
+            JokerAnnualStats jokerAnnualStats = new JokerAnnualStats(String.valueOf(jTextField1.getText()));
+            jokerAnnualStats.setVisible(true);
             //Κλεισιμο παράθυρου
             dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -162,19 +162,19 @@ public class JokerJFrame4 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JokerJFrame4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JokerSelectYear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JokerJFrame4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JokerSelectYear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JokerJFrame4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JokerSelectYear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JokerJFrame4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JokerSelectYear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new JokerJFrame4().setVisible(true);
+            new JokerSelectYear().setVisible(true);
         });
     }
 

@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package jokergamestats;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -22,63 +20,69 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
- * @author vker
+ * @author Vasilis Kerestetzis
+ * @author Giorgos Kiopektzis
+ * @author Fani Kontou
+ * @author Giannis Sykaras
  */
+
 @Entity
-@Table(name = "DRAWS")
+@Table(catalog = "", schema = "JOKER")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Draws.findAll", query = "SELECT d FROM Draws d")
     , @NamedQuery(name = "Draws.findByDrawid", query = "SELECT d FROM Draws d WHERE d.drawid = :drawid")
-    , @NamedQuery(name = "Draws.findByDrawtime", query = "SELECT d FROM Draws d WHERE d.drawtime = :drawtime")
-    , @NamedQuery(name = "Draws.findByStatus", query = "SELECT d FROM Draws d WHERE d.status = :status")
-    , @NamedQuery(name = "Draws.findByDrawbreak", query = "SELECT d FROM Draws d WHERE d.drawbreak = :drawbreak")
-    , @NamedQuery(name = "Draws.findByVisualdraw", query = "SELECT d FROM Draws d WHERE d.visualdraw = :visualdraw")
-    , @NamedQuery(name = "Draws.findByPricepoints", query = "SELECT d FROM Draws d WHERE d.pricepoints = :pricepoints")
-    , @NamedQuery(name = "Draws.findByWinninglist", query = "SELECT d FROM Draws d WHERE d.winninglist = :winninglist")
+    , @NamedQuery(name = "Draws.findByWinningno1", query = "SELECT d FROM Draws d WHERE d.winningno1 = :winningno1")
+    , @NamedQuery(name = "Draws.findByWinningno2", query = "SELECT d FROM Draws d WHERE d.winningno2 = :winningno2")
+    , @NamedQuery(name = "Draws.findByWinningno3", query = "SELECT d FROM Draws d WHERE d.winningno3 = :winningno3")
+    , @NamedQuery(name = "Draws.findByWinningno4", query = "SELECT d FROM Draws d WHERE d.winningno4 = :winningno4")
+    , @NamedQuery(name = "Draws.findByWinningno5", query = "SELECT d FROM Draws d WHERE d.winningno5 = :winningno5")
     , @NamedQuery(name = "Draws.findByWinningbonus", query = "SELECT d FROM Draws d WHERE d.winningbonus = :winningbonus")
-    , @NamedQuery(name = "Draws.findByColumns", query = "SELECT d FROM Draws d WHERE d.columns = :columns")
-    , @NamedQuery(name = "Draws.findByWagers", query = "SELECT d FROM Draws d WHERE d.wagers = :wagers")
-    , @NamedQuery(name = "Draws.findByAddon", query = "SELECT d FROM Draws d WHERE d.addon = :addon")})
+    , @NamedQuery(name = "Draws.deleteByDrawid", query = "DELETE FROM Draws d WHERE d.drawid = :drawid")})
+
 public class Draws implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "DRAWID")
+    @Column(nullable = false)
     private Integer drawid;
-    @Column(name = "DRAWTIME")
-    private Integer drawtime;
-    @Column(name = "STATUS")
-    private String status;
-    @Column(name = "DRAWBREAK")
-    private String drawbreak;
-    @Column(name = "VISUALDRAW")
-    private Integer visualdraw;
-    @Column(name = "PRICEPOINTS")
-    private String pricepoints;
-    @Column(name = "WINNINGLIST")
-    private String winninglist;
-    @Column(name = "WINNINGBONUS")
+    @Basic(optional = false)
+    @Column(nullable = false, length = 10)
+    private String winningno1;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 10)
+    private String winningno2;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 10)
+    private String winningno3;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 10)
+    private String winningno4;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 10)
+    private String winningno5;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 20)
     private String winningbonus;
-    @Column(name = "COLUMNS")
-    private Integer columns;
-    @Column(name = "WAGERS")
-    private Integer wagers;
-    @Column(name = "ADDON")
-    private String addon;
-    @JoinColumn(name = "GAMEID", referencedColumnName = "GAMEID")
-    @ManyToOne
-    private Games gameid;
-    @OneToMany(mappedBy = "drawid")
-    private List<Prizecategories> prizecategoriesList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "drawidFk")
+    private Collection<Prizecategories> prizecategoriesCollection;
 
     public Draws() {
     }
 
     public Draws(Integer drawid) {
         this.drawid = drawid;
+    }
+
+    public Draws(Integer drawid, String winningno1, String winningno2, String winningno3, String winningno4, String winningno5, String winningbonus) {
+        this.drawid = drawid;
+        this.winningno1 = winningno1;
+        this.winningno2 = winningno2;
+        this.winningno3 = winningno3;
+        this.winningno4 = winningno4;
+        this.winningno5 = winningno5;
+        this.winningbonus = winningbonus;
     }
 
     public Integer getDrawid() {
@@ -89,52 +93,44 @@ public class Draws implements Serializable {
         this.drawid = drawid;
     }
 
-    public Integer getDrawtime() {
-        return drawtime;
+    public String getWinningno1() {
+        return winningno1;
     }
 
-    public void setDrawtime(Integer drawtime) {
-        this.drawtime = drawtime;
+    public void setWinningno1(String winningno1) {
+        this.winningno1 = winningno1;
     }
 
-    public String getStatus() {
-        return status;
+    public String getWinningno2() {
+        return winningno2;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setWinningno2(String winningno2) {
+        this.winningno2 = winningno2;
     }
 
-    public String getDrawbreak() {
-        return drawbreak;
+    public String getWinningno3() {
+        return winningno3;
     }
 
-    public void setDrawbreak(String drawbreak) {
-        this.drawbreak = drawbreak;
+    public void setWinningno3(String winningno3) {
+        this.winningno3 = winningno3;
     }
 
-    public Integer getVisualdraw() {
-        return visualdraw;
+    public String getWinningno4() {
+        return winningno4;
     }
 
-    public void setVisualdraw(Integer visualdraw) {
-        this.visualdraw = visualdraw;
+    public void setWinningno4(String winningno4) {
+        this.winningno4 = winningno4;
     }
 
-    public String getPricepoints() {
-        return pricepoints;
+    public String getWinningno5() {
+        return winningno5;
     }
 
-    public void setPricepoints(String pricepoints) {
-        this.pricepoints = pricepoints;
-    }
-
-    public String getWinninglist() {
-        return winninglist;
-    }
-
-    public void setWinninglist(String winninglist) {
-        this.winninglist = winninglist;
+    public void setWinningno5(String winningno5) {
+        this.winningno5 = winningno5;
     }
 
     public String getWinningbonus() {
@@ -145,45 +141,13 @@ public class Draws implements Serializable {
         this.winningbonus = winningbonus;
     }
 
-    public Integer getColumns() {
-        return columns;
-    }
-
-    public void setColumns(Integer columns) {
-        this.columns = columns;
-    }
-
-    public Integer getWagers() {
-        return wagers;
-    }
-
-    public void setWagers(Integer wagers) {
-        this.wagers = wagers;
-    }
-
-    public String getAddon() {
-        return addon;
-    }
-
-    public void setAddon(String addon) {
-        this.addon = addon;
-    }
-
-    public Games getGameid() {
-        return gameid;
-    }
-
-    public void setGameid(Games gameid) {
-        this.gameid = gameid;
-    }
-
     @XmlTransient
-    public List<Prizecategories> getPrizecategoriesList() {
-        return prizecategoriesList;
+    public Collection<Prizecategories> getPrizecategoriesCollection() {
+        return prizecategoriesCollection;
     }
 
-    public void setPrizecategoriesList(List<Prizecategories> prizecategoriesList) {
-        this.prizecategoriesList = prizecategoriesList;
+    public void setPrizecategoriesCollection(Collection<Prizecategories> prizecategoriesCollection) {
+        this.prizecategoriesCollection = prizecategoriesCollection;
     }
 
     @Override
@@ -208,7 +172,7 @@ public class Draws implements Serializable {
 
     @Override
     public String toString() {
-        return "Database.Draws[ drawid=" + drawid + " ]";
+        return "jokergamestats.Draws[ drawid=" + drawid + " ]";
     }
     
 }

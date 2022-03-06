@@ -34,15 +34,18 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
 /**
- *
- * @author gkiop
+ * @author Vasilis Kerestetzis
+ * @author Giorgos Kiopektzis
+ * @author Fani Kontou
+ * @author Giannis Sykaras
  */
-public class JokerJFrame5 extends javax.swing.JFrame {
+
+public class JokerStatistic extends javax.swing.JFrame {
 
     /**
-     * Creates new form JokerJFrame5
+     * Creates new form JokerStatistic
      */
-    public JokerJFrame5() {
+    public JokerStatistic() {
         initComponents();
         setResizable(false);        
         setLocationRelativeTo(null);
@@ -320,8 +323,8 @@ public class JokerJFrame5 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Μεταφερομαστε στην σελιδα "ΠΡΟΒΟΛΗ ΣΤΑΤΙΣΤΙΚΩΝ ΣΤΟΙΧΕΙΩΝ ΚΛΗΡΩΣΕΩΝ ΣΕ ΓΡΑΦΙΚΗ ΜΟΡΦΗ"
-        JokerJFrame5_1 jokerJFrame5_1 = new JokerJFrame5_1();
-        jokerJFrame5_1.setVisible(true);  
+        JokerStatisticsDB jokerStatisticsDB = new JokerStatisticsDB();
+        jokerStatisticsDB.setVisible(true);  
         //Κλεισιμο παράθυρου
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -545,8 +548,8 @@ public class JokerJFrame5 extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // Μεταφερομαστε στην αρχικη σελιδα του JOKER
-        JokerJFrame2 jokerJFrame2 = new JokerJFrame2();
-        jokerJFrame2.setVisible(true);
+        JokerMainScreen jokerMainScreen = new JokerMainScreen();
+        jokerMainScreen.setVisible(true);
         //Κλεισιμο παράθυρου
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -568,20 +571,20 @@ public class JokerJFrame5 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JokerJFrame5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JokerStatistic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JokerJFrame5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JokerStatistic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JokerJFrame5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JokerStatistic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JokerJFrame5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JokerStatistic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JokerJFrame5().setVisible(true);
+                new JokerStatistic().setVisible(true);
             }
         });
     }

@@ -16,12 +16,12 @@ import javax.swing.JOptionPane;
  * @author Giannis Sykaras
  */
 
-public class JokerJFrame2 extends javax.swing.JFrame {
+public class JokerMainScreen extends javax.swing.JFrame {
 
     /**
-     * Creates new form JokerJFrame2
+     * Creates new form JokerMainScreen
      */
-    public JokerJFrame2() {
+    public JokerMainScreen() {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
@@ -102,7 +102,6 @@ public class JokerJFrame2 extends javax.swing.JFrame {
         jButton4.setMnemonic('l');
         jButton4.setText("4. Επιστροφή στο μενού επιλογής παιχνιδιού ΟΠΑΠ");
         jButton4.setToolTipText("");
-        jButton4.setActionCommand("4. Επιστροφή στο μενού επιλογής παιχνιδιού ΟΠΑΠ");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -166,13 +165,13 @@ public class JokerJFrame2 extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(66, 66, 66)
                 .addComponent(jButton1)
-                .addGap(46, 46, 46)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
-                .addGap(51, 51, 51)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3)
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -199,32 +198,32 @@ public class JokerJFrame2 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Μεταφερόμαστε στη σελίδα "Διαχείριση δεδομένων ΤΖΟΚΕΡ"
-        JokerJFrame6 jokerJFrame6 = new JokerJFrame6();
-        jokerJFrame6.setVisible(true);
+        JokerDBControl jokerDBControl = new JokerDBControl();
+        jokerDBControl.setVisible(true);
         //Κλεισιμο παράθυρου
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // Μεταφερόμαστε στη σελίδα "Προβολή δεδομένων ΤΖΟΚΕΡ ανά μήνα για συγκεκριμένο έτος"
-        JokerJFrame4 jokerJFrame4 = new JokerJFrame4();
-        jokerJFrame4.setVisible(true);
+        JokerSelectYear jokerSelectYear = new JokerSelectYear();
+        jokerSelectYear.setVisible(true);
         //Κλεισιμο παράθυρου
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Μεταφερόμαστε στη σελίδα "Προβολή στατιστικών δεδομένων ΤΖΟΚΕΡ και εκτύπωση σε αρχείο pdf"
-        JokerJFrame5 jokerJFrame5 = new JokerJFrame5();
-        jokerJFrame5.setVisible(true);
+        JokerStatistic jokerStatistic = new JokerStatistic();
+        jokerStatistic.setVisible(true);
         //Κλεισιμο παράθυρου
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // Επιστροφή στην αρχική σελιδα
-        JokerJFrame jokerJFrame = new JokerJFrame();
-        jokerJFrame.setVisible(true);
+        StartScreen startScreen = new StartScreen();
+        startScreen.setVisible(true);
         //Κλεισιμο παράθυρου
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -246,21 +245,19 @@ public class JokerJFrame2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JokerJFrame2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JokerMainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JokerJFrame2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JokerMainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JokerJFrame2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JokerMainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JokerJFrame2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JokerMainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JokerJFrame2().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new JokerMainScreen().setVisible(true);
         });
     }
 

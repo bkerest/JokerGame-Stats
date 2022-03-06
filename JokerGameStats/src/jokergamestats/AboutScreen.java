@@ -8,15 +8,18 @@ package jokergamestats;
 import javax.swing.JFrame;
 
 /**
- *
- * @author vkere
+ * @author Vasilis Kerestetzis
+ * @author Giorgos Kiopektzis
+ * @author Fani Kontou
+ * @author Giannis Sykaras
  */
-public class JFrameAbout extends javax.swing.JFrame {
+
+public class AboutScreen extends javax.swing.JFrame {
 
     /**
-     * Creates new form JFrameAbout
+     * Creates new form AboutScreen
      */
-    public JFrameAbout() {
+    public AboutScreen() {
         initComponents();        
         setResizable(false);
         setLocationRelativeTo(null);
@@ -89,8 +92,8 @@ public class JFrameAbout extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // Επιστροφή στην αρχική σελιδα
-        JokerJFrame jokerJFrame = new JokerJFrame();
-        jokerJFrame.setVisible(true);
+        StartScreen startScreen = new StartScreen();
+        startScreen.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -111,20 +114,20 @@ public class JFrameAbout extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameAbout.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AboutScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameAbout.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AboutScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameAbout.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AboutScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameAbout.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AboutScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrameAbout().setVisible(true);
+                new AboutScreen().setVisible(true);
             }
         });
     }

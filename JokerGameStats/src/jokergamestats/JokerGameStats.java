@@ -8,9 +8,12 @@ package jokergamestats;
 
 
 /**
- *
- * @author vker
+ * @author Vasilis Kerestetzis
+ * @author Giorgos Kiopektzis
+ * @author Fani Kontou
+ * @author Giannis Sykaras
  */
+
 public class JokerGameStats {
     
 
@@ -19,8 +22,8 @@ public class JokerGameStats {
      */
     public static void main(String[] args) {
         // Τρέχουμε το αρχικό JFrame
-        JokerJFrame jokerJFrame = new JokerJFrame();
-        jokerJFrame.setVisible(true);
+        StartScreen startScreen = new StartScreen();
+        startScreen.setVisible(true);
                
     }
     
