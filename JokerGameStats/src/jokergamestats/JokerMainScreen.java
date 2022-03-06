@@ -23,13 +23,14 @@ public class JokerMainScreen extends javax.swing.JFrame {
      * Creates new form JokerMainScreen
      */
     public JokerMainScreen() {
+        this.dbsInit = new DbConnectHelper();
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
     
-    private DbConnectHelper dbsInit = new DbConnectHelper() ; 
+    private DbConnectHelper dbsInit ; 
 
     /**
      * This method is called from within the constructor to initialize the form.

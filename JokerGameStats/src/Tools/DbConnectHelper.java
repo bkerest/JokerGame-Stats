@@ -34,11 +34,8 @@ public final class DbConnectHelper
 
     
     
-    public DbConnectHelper() throws Exception {
-        
-        NetworkServerControl server = new NetworkServerControl();
-        server.start (null);
-        
+    public DbConnectHelper() {
+          
         try {
             //Register JDBC driver
             Class.forName("org.apache.derby.jdbc.ClientDriver");
