@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="JokerGameStats">
+  <ClassDiagramComponents>
+    <Class name="AboutScreen" package="jokergamestats" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="jButton4" type="javax.swing.JButton" visibility="package"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="package"/>
+        <Field name="jScrollPane2" type="javax.swing.JScrollPane" visibility="package"/>
+        <Field name="jTextPane1" type="javax.swing.JTextPane" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="jButton4ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Draws" package="jokergamestats" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="drawid" type="Integer" visibility="private"/>
+        <Field name="winningno1" type="String" visibility="private"/>
+        <Field name="winningno2" type="String" visibility="private"/>
+        <Field name="winningno3" type="String" visibility="private"/>
+        <Field name="winningno4" type="String" visibility="private"/>
+        <Field name="winningno5" type="String" visibility="private"/>
+        <Field name="winningbonus" type="String" visibility="private"/>
+        <Field name="prizecategoriesCollection" type="Collection&lt;Prizecategories&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Integer" name="drawid"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Integer" name="drawid"/>
+          <Argument type="String" name="winningno1"/>
+          <Argument type="String" name="winningno2"/>
+          <Argument type="String" name="winningno3"/>
+          <Argument type="String" name="winningno4"/>
+          <Argument type="String" name="winningno5"/>
+          <Argument type="String" name="winningbonus"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getDrawid" returnType="Integer" visibility="public"/>
+        <Method name="setDrawid" returnType="void" visibility="public">
+          <Argument type="Integer" name="drawid"/>
+        </Method>
+        <Method name="getWinningno1" returnType="String" visibility="public"/>
+        <Method name="setWinningno1" returnType="void" visibility="public">
+          <Argument type="String" name="winningno1"/>
+        </Method>
+        <Method name="getWinningno2" returnType="String" visibility="public"/>
+        <Method name="setWinningno2" returnType="void" visibility="public">
+          <Argument type="String" name="winningno2"/>
+        </Method>
+        <Method name="getWinningno3" returnType="String" visibility="public"/>
+        <Method name="setWinningno3" returnType="void" visibility="public">
+          <Argument type="String" name="winningno3"/>
+        </Method>
+        <Method name="getWinningno4" returnType="String" visibility="public"/>
+        <Method name="setWinningno4" returnType="void" visibility="public">
+          <Argument type="String" name="winningno4"/>
+        </Method>
+        <Method name="getWinningno5" returnType="String" visibility="public"/>
+        <Method name="setWinningno5" returnType="void" visibility="public">
+          <Argument type="String" name="winningno5"/>
+        </Method>
+        <Method name="getWinningbonus" returnType="String" visibility="public"/>
+        <Method name="setWinningbonus" returnType="void" visibility="public">
+          <Argument type="String" name="winningbonus"/>
+        </Method>
+        <Method name="getPrizecategoriesCollection" returnType="Collection&lt;Prizecategories&gt;" visibility="public"/>
+        <Method name="setPrizecategoriesCollection" returnType="void" visibility="public">
+          <Argument type="Collection&lt;Prizecategories&gt;" name="prizecategoriesCollection"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DrawsJpaController" package="jokergamestats" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="emf" type="EntityManagerFactory" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="EntityManagerFactory" name="emf"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="public"/>
+        <Method name="create" returnType="void" visibility="public">
+          <Argument type="Draws" name="draws"/>
+        </Method>
+        <Method name="edit" returnType="void" visibility="public">
+          <Argument type="Draws" name="draws"/>
+        </Method>
+        <Method name="destroy" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="findDrawsEntities" returnType="List&lt;Draws&gt;" visibility="public"/>
+        <Method name="findDrawsEntities" returnType="List&lt;Draws&gt;" visibility="public">
+          <Argument type="int" name="maxResults"/>
+          <Argument type="int" name="firstResult"/>
+        </Method>
+        <Method name="findDrawsEntities" returnType="List&lt;Draws&gt;" visibility="private">
+          <Argument type="boolean" name="all"/>
+          <Argument type="int" name="maxResults"/>
+          <Argument type="int" name="firstResult"/>
+        </Method>
+        <Method name="findDraws" returnType="Draws" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="getDrawsCount" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DbFailureException" package="jokergamestats.exceptions" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="IllegalOrphanException" package="jokergamestats.exceptions" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="messages" type="List&lt;String&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="List&lt;String&gt;" name="messages"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getMessages" returnType="List&lt;String&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="InvalidDatasetException" package="jokergamestats.exceptions" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="NonexistentEntityException" package="jokergamestats.exceptions" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+          <Argument type="Throwable" name="cause"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="PreexistingEntityException" package="jokergamestats.exceptions" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+          <Argument type="Throwable" name="cause"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="QuandlDatasetNotFoundException" package="jokergamestats.exceptions" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="JokerAnnualStats" package="jokergamestats" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="year" type="String" visibility="package" isStatic="true"/>
+        <Field name="jButton4" type="javax.swing.JButton" visibility="package"/>
+        <Field name="jButton5" type="javax.swing.JButton" visibility="package"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="package"/>
+        <Field name="jLabel10" type="javax.swing.JLabel" visibility="package"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="package"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="package"/>
+        <Field name="jLabel4" type="javax.swing.JLabel" visibility="package"/>
+        <Field name="jLabel5" type="javax.swing.JLabel" visibility="package"/>
+        <Field name="jLabel6" type="javax.swing.JLabel" visibility="package"/>
+        <Field name="jLabel7" type="javax.swing.JLabel" visibility="package"/>
+        <Field name="jLabel8" type="javax.swing.JLabel" visibility="package"/>
+        <Field name="jLabel9" type="javax.swing.JLabel" visibility="package"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="package"/>
+        <Field name="jTable1" type="javax.swing.JTable" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="year"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="jButton4ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton5ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="JokerDBControl" package="jokergamestats" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="emf" type="EntityManagerFactory" visibility="package"/>
+        <Field name="em" type="EntityManager" visibility="package"/>
+        <Field name="tx" type="EntityTransaction" visibility="package"/>
+        <Field name="djc" type="DrawsJpaController" visibility="package"/>
+        <Field name="pjc" type="PrizecategoriesJpaController" visibility="package"/>
+        <Field name="jButton1" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton2" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton3" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton4" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton5" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton6" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton7" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton8" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jComboBox1" type="javax.swing.JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="jDateChooser1" type="com.toedter.calendar.JDateChooser" visibility="private"/>
+        <Field name="jDateChooser2" type="com.toedter.calendar.JDateChooser" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel4" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel5" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel6" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel7" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel8" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel9" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jScrollPane2" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jTable1" type="javax.swing.JTable" visibility="private"/>
+        <Field name="jTable2" type="javax.swing.JTable" visibility="private"/>
+        <Field name="jTextField1" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="jTextField1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton3ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jComboBox1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton2ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton7ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton4ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton5ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton6ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton8ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="JokerGameStats" package="jokergamestats" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="JokerMainScreen" package="jokergamestats" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields>
+        <Field name="dbsInit" type="DbConnectHelper" visibility="private"/>
+        <Field name="jButton1" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton2" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton3" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton4" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel4" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jMenu2" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="jMenuBar1" type="javax.swing.JMenuBar" visibility="private"/>
+        <Field name="jMenuItem2" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="jRadioButtonMenuItem1" type="javax.swing.JRadioButtonMenuItem" visibility="private"/>
+        <Field name="jRadioButtonMenuItem2" type="javax.swing.JRadioButtonMenuItem" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="jMenuItem2ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton2ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton3ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton4ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+        <Method name="setExtendedState" returnType="void" visibility="private">
+          <Argument type="float" name="CENTER_ALIGNMENT"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="JokerSelectYear" package="jokergamestats" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields>
+        <Field name="jButton3" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton4" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jTextField1" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="jButton4ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton3ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jTextField1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="JokerStatistic" package="jokergamestats" visibility="public" xPosition="1820.0" yPosition="420.0">
+      <Fields>
+        <Field name="jButton1" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton2" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton3" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton4" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel6" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jScrollPane2" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jScrollPane3" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jTable1" type="javax.swing.JTable" visibility="private"/>
+        <Field name="jTable2" type="javax.swing.JTable" visibility="private"/>
+        <Field name="jTextArea1" type="javax.swing.JTextArea" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="jButton3ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton2ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton4ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="JokerStatisticsDB" package="jokergamestats" visibility="public" xPosition="2120.0" yPosition="420.0">
+      <Fields>
+        <Field name="emf" type="EntityManagerFactory" visibility="package"/>
+        <Field name="em" type="EntityManager" visibility="package"/>
+        <Field name="tx" type="EntityTransaction" visibility="package"/>
+        <Field name="djc" type="DrawsJpaController" visibility="package"/>
+        <Field name="pjc" type="PrizecategoriesJpaController" visibility="package"/>
+        <Field name="jButton1" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton2" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton7" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel10" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel4" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel5" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel6" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel7" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel8" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jScrollPane2" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jScrollPane3" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jTable1" type="javax.swing.JTable" visibility="private"/>
+        <Field name="jTable2" type="javax.swing.JTable" visibility="private"/>
+        <Field name="jTable3" type="javax.swing.JTable" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="jButton7ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton2ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Prizecategories" package="jokergamestats" visibility="public" xPosition="20.0" yPosition="820.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="pid" type="Integer" visibility="private"/>
+        <Field name="categoryid" type="int" visibility="private"/>
+        <Field name="divedent" type="float" visibility="private"/>
+        <Field name="winners" type="int" visibility="private"/>
+        <Field name="drawidFk" type="Draws" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Integer" name="pid"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Integer" name="pid"/>
+          <Argument type="int" name="categoryid"/>
+          <Argument type="float" name="divedent"/>
+          <Argument type="int" name="winners"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="categoryid"/>
+          <Argument type="float" name="divedent"/>
+          <Argument type="int" name="winners"/>
+          <Argument type="Draws" name="drawId"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPid" returnType="Integer" visibility="public"/>
+        <Method name="setPid" returnType="void" visibility="public">
+          <Argument type="Integer" name="pid"/>
+        </Method>
+        <Method name="getCategoryid" returnType="int" visibility="public"/>
+        <Method name="setCategoryid" returnType="void" visibility="public">
+          <Argument type="int" name="categoryid"/>
+        </Method>
+        <Method name="getDivedent" returnType="float" visibility="public"/>
+        <Method name="setDivedent" returnType="void" visibility="public">
+          <Argument type="float" name="divedent"/>
+        </Method>
+        <Method name="getWinners" returnType="int" visibility="public"/>
+        <Method name="setWinners" returnType="void" visibility="public">
+          <Argument type="int" name="winners"/>
+        </Method>
+        <Method name="getDrawidFk" returnType="Draws" visibility="public"/>
+        <Method name="setDrawidFk" returnType="void" visibility="public">
+          <Argument type="Draws" name="drawidFk"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PrizecategoriesJpaController" package="jokergamestats" visibility="public" xPosition="320.0" yPosition="820.0">
+      <Fields>
+        <Field name="emf" type="EntityManagerFactory" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="EntityManagerFactory" name="emf"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="public"/>
+        <Method name="create" returnType="void" visibility="public">
+          <Argument type="Prizecategories" name="prizecategories"/>
+        </Method>
+        <Method name="edit" returnType="void" visibility="public">
+          <Argument type="Prizecategories" name="prizecategories"/>
+        </Method>
+        <Method name="destroy" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="findPrizecategoriesEntities" returnType="List&lt;Prizecategories&gt;" visibility="public"/>
+        <Method name="findPrizecategoriesEntities" returnType="List&lt;Prizecategories&gt;" visibility="public">
+          <Argument type="int" name="maxResults"/>
+          <Argument type="int" name="firstResult"/>
+        </Method>
+        <Method name="findPrizecategoriesEntities" returnType="List&lt;Prizecategories&gt;" visibility="private">
+          <Argument type="boolean" name="all"/>
+          <Argument type="int" name="maxResults"/>
+          <Argument type="int" name="firstResult"/>
+        </Method>
+        <Method name="findPrizecategories" returnType="Prizecategories" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="getPrizecategoriesCount" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="StartScreen" package="jokergamestats" visibility="public" xPosition="620.0" yPosition="820.0">
+      <Fields>
+        <Field name="jButton1" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton2" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton3" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton4" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton5" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton6" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton7" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jMenu4" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="jMenuBar2" type="javax.swing.JMenuBar" visibility="private"/>
+        <Field name="jMenuItem1" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="jMenuItem9" type="javax.swing.JMenuItem" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="jMenuItem9ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton6ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton4ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton3ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton2ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton7ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton5ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jMenuItem1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DbConnectHelper" package="Tools" visibility="public" isFinal="true" xPosition="920.0" yPosition="820.0">
+      <Fields>
+        <Field name="PERSISTENCE_UNIT_NAME" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="emf" type="EntityManagerFactory" visibility="private" isStatic="true"/>
+        <Field name="em" type="EntityManager" visibility="private" isStatic="true"/>
+        <Field name="JDBC_DRIVER" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="DB_URL" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="USER" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="PASS" type="String" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="connect" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="getEmf" returnType="EntityManagerFactory" visibility="public" isStatic="true"/>
+        <Method name="getEm" returnType="EntityManager" visibility="public" isStatic="true"/>
+        <Method name="ClearAllTablesOfDB" returnType="boolean" visibility="private"/>
+        <Method name="InitializeDB" returnType="boolean" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="jokergamestats.Prizecategories" target="jokergamestats.Draws" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pjc" source="jokergamestats.JokerStatisticsDB" target="jokergamestats.PrizecategoriesJpaController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="drawidFk" source="jokergamestats.Prizecategories" target="jokergamestats.Draws" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="jokergamestats.Draws" target="jokergamestats.Prizecategories" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dbsInit" source="jokergamestats.JokerMainScreen" target="Tools.DbConnectHelper" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="jokergamestats.PrizecategoriesJpaController" target="jokergamestats.Prizecategories" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="jokergamestats.DrawsJpaController" target="jokergamestats.Draws" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="djc" source="jokergamestats.JokerDBControl" target="jokergamestats.DrawsJpaController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="djc" source="jokergamestats.JokerStatisticsDB" target="jokergamestats.DrawsJpaController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="prizecategoriesCollection" source="jokergamestats.Draws" target="jokergamestats.Prizecategories" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pjc" source="jokergamestats.JokerDBControl" target="jokergamestats.PrizecategoriesJpaController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
