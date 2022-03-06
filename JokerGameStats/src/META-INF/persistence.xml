@@ -7,7 +7,7 @@
     <class>jokergamestats.Draws</class>
     <class>jokergamestats.Prizecategories</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/jokergame"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/jokergame;create=true"/>
       <property name="javax.persistence.jdbc.user" value="joker"/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
       <property name="javax.persistence.jdbc.password" value="joker"/>

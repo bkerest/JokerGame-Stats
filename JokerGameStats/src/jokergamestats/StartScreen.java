@@ -6,7 +6,6 @@
 package jokergamestats;
 import Tools.DbConnectHelper;
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * @author Vasilis Kerestetzis
