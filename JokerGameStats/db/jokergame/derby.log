@@ -1,7 +1,7 @@
-Sun Mar 06 15:08:00 EET 2022 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
+Sun Mar 06 19:23:33 EET 2022 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Sun Mar 06 15:08:01 EET 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017f-5f58-0e5f-000005f951bf 
+Sun Mar 06 19:23:42 EET 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017f-6042-0571-000005f951bf 
 on database directory F:\Netbeans\GIT\JokerGameStats\JokerGameStats\db\jokergame\jokergame with class loader sun.misc.Launcher$AppClassLoader@6f94fa3e 
 Loaded from file:/C:/Apache/db-derby-10.14.2.0/lib/derby.jar
 java.vendor=Oracle Corporation

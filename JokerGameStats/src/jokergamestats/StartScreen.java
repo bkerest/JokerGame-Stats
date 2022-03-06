@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package jokergamestats;
+import Tools.DbConnectHelper;
 import javax.swing.*;
 import java.awt.*;
 
@@ -242,6 +243,7 @@ public class StartScreen extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // Μεταφερομαστε στην αρχικη σελιδα του JOKER
+        DbConnectHelper.connect();
         JokerMainScreen jokerMainScreen = new JokerMainScreen();
         jokerMainScreen.setVisible(true);  
         //Κλεισιμο παράθυρου
