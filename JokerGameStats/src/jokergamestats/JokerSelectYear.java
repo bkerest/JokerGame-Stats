@@ -6,7 +6,6 @@
 package jokergamestats;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
  * @author Vasilis Kerestetzis

@@ -5,7 +5,6 @@
  */
 package jokergamestats;
 
-import Tools.DbConnectHelper;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 

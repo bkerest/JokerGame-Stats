@@ -21,8 +21,11 @@ public class StartScreen extends javax.swing.JFrame {
      */
     public StartScreen() {
         initComponents();
+        //Ακυρώνω τη λειτουργία του κουμπιού μεγιστοποίησης
         setResizable(false);
+        //Φέρνω το παράθυρο στο κέντρο της οθόνης
         setLocationRelativeTo(null);
+        //Ακυρώνω τη λειτουργία του κουμπιού "Χ"
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
@@ -198,8 +201,9 @@ public class StartScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-       //Γράφουμε τον κώδικα για να εμφανίσουμε το κουτί επιλογών
-        int response = JOptionPane.showConfirmDialog(this, "Είσαι σίγουρος;", "ΕΞΟΔΟΣ", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+       //Ερώτηση επιλογής εξόδου, μέσω του αντίστοιχου κουμπιού στο μενού
+        int response = JOptionPane.showConfirmDialog(this, "Είσαι σίγουρος;", 
+                       "ΕΞΟΔΟΣ", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         //Αποτέλεσμα επιλογών
         if(response==JOptionPane.YES_OPTION) {
             //Κλείσιμο παραθυρου
@@ -241,7 +245,9 @@ public class StartScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // Μεταφερομαστε στην αρχικη σελιδα του JOKER
+        /* Μεταφερομαστε στην αρχικη σελιδα του JOKER
+	 * Στο σημείο αυτό συνδεόμαστε στην βάση δεδομένων
+	*/
         DbConnectHelper.connect();
         JokerMainScreen jokerMainScreen = new JokerMainScreen();
         jokerMainScreen.setVisible(true);  

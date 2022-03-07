@@ -760,6 +760,10 @@ public class JokerDBControl extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        /*Καλούμε τη μέθοδο jButton1ActionPerformer, αφού πρώτα βάλουμε στο
+         *jTextField1 (το οποίο και διαβάζει) την επιλεγμένη τιμή από το
+         *jComvoBox1
+        */
         jTextField1.setText(jComboBox1.getSelectedItem().toString());
         this.jButton1ActionPerformed(evt);
     }//GEN-LAST:event_jButton6ActionPerformed
