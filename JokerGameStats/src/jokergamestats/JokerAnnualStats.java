@@ -38,7 +38,7 @@ public class JokerAnnualStats extends javax.swing.JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        
+                
         jLabel5.setText(year);
         
         String month = null;

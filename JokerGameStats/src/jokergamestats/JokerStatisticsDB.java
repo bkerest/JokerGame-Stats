@@ -14,7 +14,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  * @author Vasilis Kerestetzis
@@ -67,6 +73,8 @@ public class JokerStatisticsDB extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(984, 600));
@@ -205,11 +213,57 @@ public class JokerStatisticsDB extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
+        jButton3.setText("Προβολή Γραφήματος");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
+        jButton4.setText("Προβολή Γραφήματος");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(197, 197, 197))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton1)
+                                    .addComponent(jButton7))
+                                .addGap(156, 156, 156)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5)))
+                            .addComponent(jButton2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(92, 92, 92)
+                                .addComponent(jLabel2))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(214, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -219,35 +273,7 @@ public class JokerStatisticsDB extends javax.swing.JFrame {
                         .addGap(444, 444, 444)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel10)
-                            .addComponent(jLabel3)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(197, 197, 197))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButton1)
-                                            .addComponent(jButton7))
-                                        .addGap(156, 156, 156)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel5)))
-                                    .addComponent(jButton2))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(92, 92, 92)
-                                        .addComponent(jLabel2))
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(95, 214, Short.MAX_VALUE)))))
+                            .addComponent(jLabel3))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -271,24 +297,27 @@ public class JokerStatisticsDB extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton7)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addComponent(jButton3)
+                        .addGap(18, 41, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7)))
-                .addGap(41, 41, 41)
+                .addGap(3, 3, 3)
+                .addComponent(jButton4)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
@@ -346,8 +375,7 @@ public class JokerStatisticsDB extends javax.swing.JFrame {
         model.addRow(numbers);
         model.addRow(times);
         jTable1.setModel(model);
-
-        
+               
         //Συχνότητα εμφάνισης αριθμών joker (πέντε πιο συχνά εμφανιζόμενοι αριθμοί)
         Query query2 = em.createNativeQuery("SELECT WINNINGBONUS, COUNT(WINNINGBONUS) AS C FROM DRAWS GROUP BY WINNINGBONUS ORDER BY C DESC FETCH FIRST 5 ROWS ONLY");
         List<Object[]> list2 = query2.getResultList();
@@ -373,7 +401,14 @@ public class JokerStatisticsDB extends javax.swing.JFrame {
         model2.addRow(times2);
         jTable2.setModel(model2);
 
+        final DefaultPieDataset pieNumbers = new DefaultPieDataset();
+        final DefaultPieDataset pieJoker = new DefaultPieDataset();
         
+        for (int k = 0; k < 5 ; k++){
+            pieNumbers.setValue(numbers[k], times[k]);
+            pieJoker.setValue(numbers2[k], times2[k]);
+        }   
+      
         //Μέσος όρος κερδών ανά κατηγορία
         
         //Καταχωρώ τα Prizecategories σε μία λίστα χρησημοποιώντας τον controller
@@ -422,6 +457,84 @@ public class JokerStatisticsDB extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        /*
+        Διαβάζω τους αριθμούς μου από τον πίνακα 1 και τος μετατρέπω
+        πίσω σε lists
+        */
+        String[] numbers = new String[5];
+        Integer[] times = new Integer[5];
+        
+        try {        
+        for (int i=0; i < 5; i++){
+            numbers[i]=jTable1.getModel().getValueAt(0, i).toString();
+            times[i]=Integer.valueOf(jTable1.getModel().getValueAt(1, i).toString());
+        }
+        
+        /*
+        Δημιουργώ ένα PieDataset απαραίτητο για το γράφημά μου.
+        */
+        
+        DefaultPieDataset pieNumbers = new DefaultPieDataset();
+        for (int k = 0; k < 5 ; k++){
+            pieNumbers.setValue(numbers[k], times[k]);
+        } 
+        
+        /*
+        Δημιουργώ το γράφημα! Κώδικας από: https://youtu.be/MkrtvyxPpNg
+        */
+        
+        JFreeChart NumbersChart = ChartFactory.createPieChart("Συχνότητα Εμφάνισης Αριθμών", pieNumbers, true, true, true);
+        PiePlot p = (PiePlot) NumbersChart.getPlot();
+        ChartFrame frame = new ChartFrame("Συχνότητα Εμφάνισης Αριθμών",NumbersChart);
+        frame.setVisible(true);
+        frame.setSize(450, 500);
+        } catch (Exception ex) {
+                System.out.println(ex);
+                // Ενημερωτικό μύνημα
+                JOptionPane.showMessageDialog(null, "Παρακαλώ πατήστε το κουμπί Προβολή στατιστικών ", "Ενημέρωση", JOptionPane.INFORMATION_MESSAGE);
+                }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        /*
+        Διαβάζω τους αριθμούς μου από τον πίνακα 1 και τος μετατρέπω
+        πίσω σε lists
+        */
+        String[] numbers = new String[5];
+        Integer[] times = new Integer[5];
+        
+        try {        
+        for (int i=0; i < 5; i++){
+            numbers[i]=jTable2.getModel().getValueAt(0, i).toString();
+            times[i]=Integer.valueOf(jTable2.getModel().getValueAt(1, i).toString());
+        }
+        
+        /*
+        Δημιουργώ ένα PieDataset απαραίτητο για το γράφημά μου.
+        */
+        
+        DefaultPieDataset pieNumbers = new DefaultPieDataset();
+        for (int k = 0; k < 5 ; k++){
+            pieNumbers.setValue(numbers[k], times[k]);
+        } 
+        
+        /*
+        Δημιουργώ το γράφημα! Κώδικας από: https://youtu.be/MkrtvyxPpNg
+        */
+        
+        JFreeChart NumbersChart = ChartFactory.createPieChart("Συχνότητα Εμφάνισης Joker", pieNumbers, true, true, true);
+        PiePlot p = (PiePlot) NumbersChart.getPlot();
+        ChartFrame frame = new ChartFrame("Συχνότητα Εμφάνισης Joker",NumbersChart);
+        frame.setVisible(true);
+        frame.setSize(450, 500);
+        } catch (Exception ex) {
+                System.out.println(ex);
+                // Ενημερωτικό μύνημα
+                JOptionPane.showMessageDialog(null, "Παρακαλώ πατήστε το κουμπί Προβολή στατιστικών ", "Ενημέρωση", JOptionPane.INFORMATION_MESSAGE);
+                }    
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -460,6 +573,8 @@ public class JokerStatisticsDB extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

@@ -351,7 +351,7 @@ public class JokerStatistic extends javax.swing.JFrame {
                 builder.setPrettyPrinting();
                 Gson gson = builder.create();
 
-                //Πέρνω τα αποτελέσματα σε JsonObject και δημιουργώ ένα JsonArray το "numbers"
+                //Παίρνω τα αποτελέσματα σε JsonObject και δημιουργώ ένα JsonArray το "numbers"
                 JsonObject json = gson.fromJson(responseString, JsonObject.class);
                 JsonArray numbers = json.get("numbers").getAsJsonArray();
 
@@ -458,14 +458,14 @@ public class JokerStatistic extends javax.swing.JFrame {
                 cell.setBackgroundColor(BaseColor.LIGHT_GRAY);//Χρώμα Background
                 pdfTable.addCell(cell);//προσθέτω το κελί στον pdfTable
 
-                //Πέρνω τους αριθμούς από το jTable1 και τους προσθέτω στο pdfTable
+                //Παίρνω τους αριθμούς από το jTable1 και τους προσθέτω στο pdfTable
                 for (int i = 0; i < jTable1.getColumnCount(); i++) {
                     PdfPCell cell1 = new PdfPCell(new Paragraph(jTable1.getColumnName(i)));
                     cell1.setBackgroundColor(BaseColor.LIGHT_GRAY);
                     pdfTable.addCell(cell1);
                 }
 
-                //Πέρνω τα στατιστικά των αριθμών από το jTable1 και τους προσθέτω στο pdfTable
+                //Παίρνω τα στατιστικά των αριθμών από το jTable1 και τους προσθέτω στο pdfTable
                 for (int rows = 0; rows < jTable1.getRowCount(); rows++) {
                     for (int cols = 0; cols < jTable1.getColumnCount(); cols++) {
                         pdfTable.addCell(jTable1.getModel().getValueAt(rows, cols).toString());
@@ -480,14 +480,14 @@ public class JokerStatistic extends javax.swing.JFrame {
                 cell2.setBackgroundColor(BaseColor.LIGHT_GRAY);
                 pdfTable2.addCell(cell2);
 
-                //Πέρνω τους αριθμούς ΤΖΟΚΕΡ από το jTable2 και τους προσθέτω στο pdfTable2
+                //Παίρνω τους αριθμούς ΤΖΟΚΕΡ από το jTable2 και τους προσθέτω στο pdfTable2
                 for (int i = 0; i < jTable2.getColumnCount(); i++) {
                     PdfPCell cell1 = new PdfPCell(new Paragraph(jTable2.getColumnName(i)));
                     cell1.setBackgroundColor(BaseColor.LIGHT_GRAY);
                     pdfTable2.addCell(cell1);
                 }
 
-                //Πέρνω τα στατιστικά των αριθμών ΤΖΟΚΕΡ από το jTable2 και τους προσθέτω στο pdfTable
+                //Παίρνω τα στατιστικά των αριθμών ΤΖΟΚΕΡ από το jTable2 και τους προσθέτω στο pdfTable
                 for (int rows = 0; rows < jTable2.getRowCount(); rows++) {
                     for (int cols = 0; cols < jTable2.getColumnCount(); cols++) {
                         pdfTable2.addCell(jTable2.getModel().getValueAt(rows, cols).toString());
